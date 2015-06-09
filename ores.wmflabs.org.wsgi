@@ -7,11 +7,7 @@ from flask import request
 import yamlconf
 from ores.wsgi import server
 
-directory = os.path.dirname(os.path.realpath(__file__))
-
-config_path = os.path.join(directory, "config/ores.yaml")
-
-config = yamlconf.load(open(config_path))
+config = yamlconf.load(open("ores.wmflabs.org.yaml"))
 
 application = server.configure(config)
 
