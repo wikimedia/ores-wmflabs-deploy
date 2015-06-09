@@ -2,9 +2,9 @@
 ores:
   scorers:
     - enwiki
-    #- ptwiki
-    #- fawiki
-    #- trwiki
+    - ptwiki
+    - fawiki
+    - trwiki
     #- simplewiki
   wsgi:
     application_root: ""
@@ -16,7 +16,7 @@ ores:
 score_caches:
   local_redis:
     class: ores.score_caches.Redis
-    host: localhost
+    host: ores-redis
     prefix: "ores"
 
 # Scorers
