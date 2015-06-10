@@ -48,7 +48,7 @@ env.roledefs = {
 }
 env.use_ssh_config = True
 
-src_dir = '/srv/ores/src'
+config_dir = '/srv/ores/config'
 venv_dir = '/srv/ores/venv'
 data_dir = '/srv/ores/data'
 
@@ -67,7 +67,6 @@ def initialize_server():
     - Creates the virtualenv
     - Installs virtualenv
     - Installs nltk corpuses
-    - Installs the model files
     """
     update_git()
     sr('mkdir', '-p', venv_dir)
@@ -76,14 +75,12 @@ def initialize_server():
     sr(venv_dir + '/bin/python', '-m', 'nltk.downloader',
        '-d', data_dir + '/nltk',
        'wordnet', 'omw', 'stopwords')
-    sr('git', 'clone', 'https://github.com/yuvipanda/ores-models.git',
-       '/srv/ores/src/models')
     restart_uwsgi()
 
 
 @roles('web')
 def update_git(branch='deploy'):
-    with cd(src_dir):
+    with cd(config_dir):
         sr('git', 'fetch', 'origin')
         sr('git', 'reset', '--hard', 'origin/%s' % branch)
 
@@ -96,13 +93,14 @@ def restart_uwsgi():
 @roles('web')
 def deploy_web():
     update_git()
+    update_virtualenv()
     restart_uwsgi()
 
 
 @roles('web')
 def update_virtualenv():
     sr(venv_dir + '/bin/pip', 'install', '--upgrade',
-       '-r', src_dir + '/requirements.txt')
+       '-r', config_dir + '/requirements.txt')
 
 
 @roles('staging')
