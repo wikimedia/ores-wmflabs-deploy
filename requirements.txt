@@ -1,0 +1,1 @@
+git+https://github.com/halfak/Objective-Revision-Evaluation-Service@v0.2.0#egg=ores
