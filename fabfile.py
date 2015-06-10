@@ -47,6 +47,7 @@ env.roledefs = {
     'staging': ['ores-staging.eqiad.wmflabs'],
 }
 env.use_ssh_config = True
+env.shell = '/bin/bash -c'
 
 config_dir = '/srv/ores/config'
 venv_dir = '/srv/ores/venv'
@@ -99,8 +100,9 @@ def deploy_web():
 
 @roles('web')
 def update_virtualenv():
-    sr(venv_dir + '/bin/pip', 'install', '--upgrade',
-       '-r', config_dir + '/requirements.txt')
+    with cd(venv_dir):
+        sr(venv_dir + '/bin/pip', 'install', '--upgrade',
+           '-r', config_dir + '/requirements.txt')
 
 
 @roles('staging')
