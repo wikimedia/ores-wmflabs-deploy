@@ -26,6 +26,7 @@ scorers:
     score_cache: local_redis
     scorer_models:
       reverted: enwiki_revert
+      wp10: enwiki_wp10
   ptwiki:
     extractor: ptwiki_api
     score_cache: local_redis
