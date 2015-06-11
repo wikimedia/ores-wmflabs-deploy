@@ -82,7 +82,7 @@ scorer_models:
   defaults:
     class: revscoring.scorer_models.MLScorerModel
   enwiki_wp10:
-    model_file: models/enwiki.wp10.linear_svc.model
+    model_file: models/enwiki.wp10.rf.model
   enwiki_revert:
     model_file: models/enwiki.reverted.linear_svc.model
   ptwiki_revert:
