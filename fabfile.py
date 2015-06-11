@@ -56,7 +56,7 @@ data_dir = '/srv/ores/data'
 
 def sr(*cmd):
     with shell_env(HOME='/srv/ores'):
-        return sudo(' '.join(cmd), user='www-data', group='www-data')
+        return sudo(' '.join(cmd), user='www-data')
 
 
 def initialize_server():
