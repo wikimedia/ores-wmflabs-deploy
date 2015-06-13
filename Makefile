@@ -7,6 +7,15 @@ frwiki_api = https://fr.wikipedia.org/w/api.php
 ptwiki_api = https://pt.wikipedia.org/w/api.php
 trwiki_api = https://tr.wikipedia.org/w/api.php
 
+all_models:
+	make models/enwiki.reverted.linear_svc.model & \
+	make models/enwiki.wp10.rf.model & \
+	make models/fawiki.reverted.linear_svc.model & \
+	make models/frwiki.reverted.linear_svc.model & \
+	make models/ptwiki.reverted.linear_svc.model & \
+	make models/trwiki.reverted.linear_svc.model &
+
+
 ########################### English Wikipedia ##################################
 datasets/enwiki.rev_reverted.20k.tsv: datasets/enwiki.rev_pages.20k.tsv
 	cat datasets/enwiki.rev_pages.20k.tsv | \
@@ -30,7 +39,8 @@ models/enwiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		ores.feature_lists.enwiki.damaging \
-		revscoring.languages.english > \
+		revscoring.languages.english \
+		--label-type=bool > \
 	models/enwiki.reverted.linear_svc.model
 
 datasets/enwiki.features_wp10.30k.tsv: datasets/enwiki.rev_wp10.30k.tsv
@@ -73,7 +83,8 @@ models/fawiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		ores.feature_lists.fawiki.damaging \
-		revscoring.languages.persian > \
+		revscoring.languages.persian \
+		--label-type=bool > \
 	models/fawiki.reverted.linear_svc.model
 
 
@@ -100,7 +111,8 @@ models/frwiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		ores.feature_lists.frwiki.damaging \
-		revscoring.languages.french > \
+		revscoring.languages.french \
+		--label-type=bool > \
 	models/frwiki.reverted.linear_svc.model
 
 ###################### Portuguese Wikipedia ####################################
@@ -126,7 +138,8 @@ models/ptwiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		ores.feature_lists.ptwiki.damaging \
-		revscoring.languages.portuguese > \
+		revscoring.languages.portuguese \
+		--label-type=bool > \
 	models/ptwiki.reverted.linear_svc.model
 
 
