@@ -14,7 +14,7 @@ ores:
 
 # Score caches
 score_caches:
-  local_redis:
+  ore_redis:
     class: ores.score_caches.Redis
     host: ores-redis
     prefix: "ores"
@@ -23,8 +23,8 @@ score_caches:
 score_processors:
   ores_celery:
     class: ores.score_processors.Celery
-    BROKER_URL: amqp://ores-celery
-    CELERY_RESULT_BACKEND: redis://ores-celery
+    BROKER_URL: redis://ores-redis
+    CELERY_RESULT_BACKEND: redis://ores-redis
     timeout: 5 # seconds
   timeout:
     class: ores.score_processors.Timeout
@@ -34,7 +34,7 @@ score_processors:
 # Scorers
 scorers:
   defaults:
-    score_cache: local_redis
+    score_cache: ore_redis
     score_processor: ores_celery
   enwiki:
     extractor: enwiki_api
