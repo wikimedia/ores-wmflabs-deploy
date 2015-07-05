@@ -19,37 +19,46 @@ score_caches:
     host: ores-redis
     prefix: "ores"
 
+# Score processor
+score_processors:
+  ores_celery:
+    class: ores.score_processors.Celery
+    BROKER_URL: amqp://ores-celery
+    CELERY_RESULT_BACKEND: redis://ores-celery
+    timeout: 5 # seconds
+  timeout:
+    class: ores.score_processors.Timeout
+    timeout: 5 # seconds
+
+
 # Scorers
 scorers:
+  defaults
+    score_cache: local_redis
+    score_processor: ores_celery
   enwiki:
     extractor: enwiki_api
-    score_cache: local_redis
     scorer_models:
       reverted: enwiki_revert
       wp10: enwiki_wp10
   ptwiki:
     extractor: ptwiki_api
-    score_cache: local_redis
     scorer_models:
       reverted: ptwiki_revert
   fawiki:
     extractor: fawiki_api
-    score_cache: local_redis
     scorer_models:
       reverted: fawiki_revert
   trwiki:
     extractor: trwiki_api
-    score_cache: local_redis
     scorer_models:
       reverted: trwiki_revert
   frwiki:
     extractor: frwiki_api
-    score_cache: local_redis
     scorer_models:
       reverted: frwiki_revert
   simplewiki:
     extractor: simplewiki_api
-    score_cache: local_redis
     scorer_models:
       reverted: simplewiki_revert
 
