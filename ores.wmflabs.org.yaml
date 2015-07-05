@@ -33,7 +33,7 @@ score_processors:
 
 # Scorers
 scorers:
-  defaults
+  defaults:
     score_cache: local_redis
     score_processor: ores_celery
   enwiki:
