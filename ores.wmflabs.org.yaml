@@ -14,7 +14,7 @@ ores:
 
 # Score caches
 score_caches:
-  ore_redis:
+  ores_redis:
     class: ores.score_caches.Redis
     host: ores-redis
     prefix: "ores"
@@ -25,6 +25,9 @@ score_processors:
     class: ores.score_processors.Celery
     BROKER_URL: redis://ores-redis
     CELERY_RESULT_BACKEND: redis://ores-redis
+    CELERY_ACCEPT_CONTENT: ['pickle']
+    CELERY_TASK_SERIALIZER: 'pickle'
+    CELERY_RESULT_SERIALIZER: 'pickle'
     timeout: 5 # seconds
   timeout:
     class: ores.score_processors.Timeout
@@ -34,7 +37,7 @@ score_processors:
 # Scorers
 scorers:
   defaults:
-    score_cache: ore_redis
+    score_cache: ores_redis
     score_processor: ores_celery
   enwiki:
     extractor: enwiki_api
