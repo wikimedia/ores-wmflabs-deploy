@@ -2,11 +2,12 @@
 import logging
 
 import yamlconf
-from ores.score_processors import celery
+from ores.score_processors import Celery
 
 config = yamlconf.load(open("ores.wmflabs.org.yaml"))
 
-application = celery.configure(config, "ores_celery")
+score_processor = Celery.from_config(config, config['ores']['score_processor'])
+application = score_processor.application
 
 if __name__ == '__main__':
     logging.basicConfig(

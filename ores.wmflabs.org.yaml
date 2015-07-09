@@ -1,11 +1,6 @@
 # Top level configuration
 ores:
-  scorers:
-    - enwiki
-    - ptwiki
-    - fawiki
-    - trwiki
-    #- simplewiki
+  score_processor: ores_celery
   wsgi:
     application_root: ""
     url_prefix: ""
@@ -21,6 +16,14 @@ score_caches:
 
 # Score processor
 score_processors:
+  defaults:
+    score_cache: ores_redis
+    scoring_contexts:
+      - enwiki
+      - ptwiki
+      - fawiki
+      - trwiki
+      #- simplewiki
   ores_celery:
     class: ores.score_processors.Celery
     BROKER_URL: redis://ores-redis
@@ -28,17 +31,14 @@ score_processors:
     CELERY_ACCEPT_CONTENT: ['pickle']
     CELERY_TASK_SERIALIZER: 'pickle'
     CELERY_RESULT_SERIALIZER: 'pickle'
-    timeout: 5 # seconds
+    timeout: 15 # seconds
   timeout:
     class: ores.score_processors.Timeout
-    timeout: 5 # seconds
+    timeout: 15 # seconds
 
 
 # Scorers
-scorers:
-  defaults:
-    score_cache: ores_redis
-    score_processor: ores_celery
+scoring_contexts:
   enwiki:
     extractor: enwiki_api
     scorer_models:
