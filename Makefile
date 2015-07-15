@@ -6,6 +6,7 @@ fawiki_api = https://fa.wikipedia.org/w/api.php
 frwiki_api = https://fr.wikipedia.org/w/api.php
 ptwiki_api = https://pt.wikipedia.org/w/api.php
 trwiki_api = https://tr.wikipedia.org/w/api.php
+idwiki_api = https://tr.wikipedia.org/w/api.php
 
 all_models:
 	make models/enwiki.reverted.linear_svc.model & \
@@ -13,7 +14,8 @@ all_models:
 	make models/fawiki.reverted.linear_svc.model & \
 	make models/frwiki.reverted.linear_svc.model & \
 	make models/ptwiki.reverted.linear_svc.model & \
-	make models/trwiki.reverted.linear_svc.model &
+	make models/trwiki.reverted.linear_svc.model & \
+	make models/idwiki.reverted.linear_svc.model &
 
 
 ########################### English Wikipedia ##################################
@@ -174,3 +176,32 @@ models/trwiki.reverted.linear_svc.model: \
 		--label-type=bool \
 		--version=0.1.0 > \
 	models/trwiki.reverted.linear_svc.model
+
+
+######################### Indonesian Wikipedia #################################
+datasets/idwiki.rev_reverted.20k.tsv: datasets/idwiki.rev_pages.20k.tsv
+	cat datasets/idwiki.rev_pages.20k.tsv | \
+	./utility label_reverted \
+		--api=$(idwiki_api) \
+		--revert-window=$(revert_window) \
+		--revert-radius=$(revert_radius) > \
+	datasets/idwiki.rev_reverted.20k.tsv
+
+datasets/idwiki.features_reverted.20k.tsv: datasets/idwiki.rev_reverted.20k.tsv
+	cat datasets/idwiki.rev_reverted.20k.tsv | \
+	revscoring extract_features \
+		ores.feature_lists.idwiki.damaging \
+		--api=$(idwiki_api) \
+		--language=revscoring.languages.turkish > \
+	datasets/idwiki.features_reverted.20k.tsv
+
+models/idwiki.reverted.linear_svc.model: \
+		datasets/idwiki.features_reverted.20k.tsv
+	cat datasets/idwiki.features_reverted.20k.tsv | \
+	revscoring train_test \
+		revscoring.scorer_models.LinearSVCModel \
+		ores.feature_lists.idwiki.damaging \
+		revscoring.languages.turkish \
+		--label-type=bool \
+		--version=0.1.0 > \
+	models/idwiki.reverted.linear_svc.model
