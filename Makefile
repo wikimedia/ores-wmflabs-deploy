@@ -43,7 +43,7 @@ models/enwiki.reverted.linear_svc.model: \
 		feature_lists.enwiki.damaging \
 		revscoring.languages.english \
 		--label-type=bool \
-		--version=0.1.0 > \
+		--version=0.2.0 > \
 	models/enwiki.reverted.linear_svc.model
 
 datasets/enwiki.features_wp10.30k.tsv: datasets/enwiki.rev_wp10.30k.tsv
@@ -92,7 +92,7 @@ models/fawiki.reverted.linear_svc.model: \
 		feature_lists.fawiki.damaging \
 		revscoring.languages.persian \
 		--label-type=bool \
-		--version=0.1.0 > \
+		--version=0.2.0 > \
 	models/fawiki.reverted.linear_svc.model
 
 
@@ -121,7 +121,7 @@ models/frwiki.reverted.linear_svc.model: \
 		feature_lists.frwiki.damaging \
 		revscoring.languages.french \
 		--label-type=bool \
-		--version=0.1.0 > \
+		--version=0.2.0 > \
 	models/frwiki.reverted.linear_svc.model
 
 ###################### Portuguese Wikipedia ####################################
@@ -149,7 +149,7 @@ models/ptwiki.reverted.linear_svc.model: \
 		feature_lists.ptwiki.damaging \
 		revscoring.languages.portuguese \
 		--label-type=bool \
-		--version=0.1.0 > \
+		--version=0.2.0 > \
 	models/ptwiki.reverted.linear_svc.model
 
 
@@ -178,7 +178,7 @@ models/trwiki.reverted.linear_svc.model: \
 		feature_lists.trwiki.damaging \
 		revscoring.languages.turkish \
 		--label-type=bool \
-		--version=0.1.0 > \
+		--version=0.2.0 > \
 	models/trwiki.reverted.linear_svc.model
 
 
@@ -207,5 +207,5 @@ models/idwiki.reverted.linear_svc.model: \
 		feature_lists.idwiki.damaging \
 		revscoring.languages.turkish \
 		--label-type=bool \
-		--version=0.1.0 > \
+		--version=0.2.0 > \
 	models/idwiki.reverted.linear_svc.model
