@@ -56,10 +56,14 @@ datasets/enwiki.features_wp10.30k.tsv: datasets/enwiki.rev_wp10.30k.tsv
 
 models/enwiki.wp10.rf.model: datasets/enwiki.features_wp10.30k.tsv
 	cat datasets/enwiki.features_wp10.30k.tsv | \
+	grep -v -P "\tA" | \
 	revscoring train_test \
 		revscoring.scorer_models.RFModel \
 		feature_lists.enwiki.wp10 \
-		revscoring.languages.english > \
+		revscoring.languages.english \
+		-p 'n_estimators=501' \
+		-p 'min_samples_leaf=8'
+		--version=0.1.0 > \
 	models/enwiki.wp10.rf.model
 
 
