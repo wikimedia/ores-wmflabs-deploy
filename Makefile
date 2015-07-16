@@ -6,7 +6,7 @@ fawiki_api = https://fa.wikipedia.org/w/api.php
 frwiki_api = https://fr.wikipedia.org/w/api.php
 ptwiki_api = https://pt.wikipedia.org/w/api.php
 trwiki_api = https://tr.wikipedia.org/w/api.php
-idwiki_api = https://tr.wikipedia.org/w/api.php
+idwiki_api = https://id.wikipedia.org/w/api.php
 
 all_models:
 	make models/enwiki.reverted.linear_svc.model & \
