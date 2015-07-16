@@ -45,6 +45,7 @@ from fabric.api import sudo, env, cd, roles, shell_env
 env.roledefs = {
     'web': ['ores-web-01.eqiad.wmflabs', 'ores-web-02.eqiad.wmflabs'],
     'staging': ['ores-staging.eqiad.wmflabs'],
+    'workers': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs']
 }
 env.use_ssh_config = True
 env.shell = '/bin/bash -c'
@@ -59,7 +60,11 @@ def sr(*cmd):
         return sudo(' '.join(cmd), user='www-data')
 
 
-def initialize_server():
+def initialize_staging_server():
+    initialize_server('master')
+
+
+def initialize_server(branch='deploy'):
     """
     Setup an initial deployment on a fresh host.
 
@@ -69,7 +74,7 @@ def initialize_server():
     - Installs virtualenv
     - Installs nltk corpuses
     """
-    update_git()
+    update_git(branch)
     sr('mkdir', '-p', venv_dir)
     sr('virtualenv', '--python', 'python3', '--system-site-packages', venv_dir)
     update_virtualenv()
@@ -77,6 +82,7 @@ def initialize_server():
        '-d', data_dir + '/nltk',
        'wordnet', 'omw', 'stopwords')
     restart_uwsgi()
+    restart_celery()
 
 
 @roles('web')
@@ -88,7 +94,11 @@ def update_git(branch='deploy'):
 
 @roles('web')
 def restart_uwsgi():
-    sudo('uwsgictl restart')
+    sudo('service uwsgi-ores-web restart')
+
+
+def restart_celery():
+    sudo('service celery-ores-worker restart')
 
 
 @roles('web')
@@ -96,6 +106,7 @@ def deploy_web():
     update_git()
     update_virtualenv()
     restart_uwsgi()
+    restart_celery()
 
 
 @roles('web')
@@ -107,9 +118,10 @@ def update_virtualenv():
 
 @roles('staging')
 def stage():
-    update_git('staging')
+    update_git('master')
     update_virtualenv()
     restart_uwsgi()
+    restart_celery()
 
 
 def run_puppet():
