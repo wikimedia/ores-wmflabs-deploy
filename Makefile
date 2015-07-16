@@ -196,7 +196,7 @@ datasets/idwiki.features_reverted.20k.tsv: datasets/idwiki.rev_reverted.20k.tsv
 	revscoring extract_features \
 		feature_lists.idwiki.damaging \
 		--api=$(idwiki_api) \
-		--language=revscoring.languages.turkish > \
+		--language=revscoring.languages.indonesian > \
 	datasets/idwiki.features_reverted.20k.tsv
 
 models/idwiki.reverted.linear_svc.model: \
@@ -205,7 +205,7 @@ models/idwiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.idwiki.damaging \
-		revscoring.languages.turkish \
+		revscoring.languages.indonesian \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/idwiki.reverted.linear_svc.model
