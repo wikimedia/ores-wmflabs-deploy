@@ -7,6 +7,7 @@ frwiki_api = https://fr.wikipedia.org/w/api.php
 ptwiki_api = https://pt.wikipedia.org/w/api.php
 trwiki_api = https://tr.wikipedia.org/w/api.php
 idwiki_api = https://id.wikipedia.org/w/api.php
+eswiki_api = https://es.wikipedia.org/w/api.php
 
 all_models:
 	make models/enwiki.reverted.linear_svc.model & \
@@ -15,7 +16,8 @@ all_models:
 	make models/frwiki.reverted.linear_svc.model & \
 	make models/ptwiki.reverted.linear_svc.model & \
 	make models/trwiki.reverted.linear_svc.model & \
-	make models/idwiki.reverted.linear_svc.model &
+	make models/idwiki.reverted.linear_svc.model & \
+	make models/eswiki.reverted.linear_svc.model &
 
 
 ########################### English Wikipedia ##################################
@@ -209,3 +211,32 @@ models/idwiki.reverted.linear_svc.model: \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/idwiki.reverted.linear_svc.model
+
+
+############################ Spanish Wikipedia #################################
+datasets/eswiki.rev_reverted.20k.tsv: datasets/eswiki.rev_pages.20k.tsv
+	cat datasets/eswiki.rev_pages.20k.tsv | \
+	ores label_reverted \
+		--api=$(eswiki_api) \
+		--revert-window=$(revert_window) \
+		--revert-radius=$(revert_radius) > \
+	datasets/eswiki.rev_reverted.20k.tsv
+
+datasets/eswiki.features_reverted.20k.tsv: datasets/eswiki.rev_reverted.20k.tsv
+	cat datasets/eswiki.rev_reverted.20k.tsv | \
+	revscoring extract_features \
+		feature_lists.eswiki.damaging \
+		--api=$(eswiki_api) \
+		--language=revscoring.languages.indonesian > \
+	datasets/eswiki.features_reverted.20k.tsv
+
+models/eswiki.reverted.linear_svc.model: \
+		datasets/eswiki.features_reverted.20k.tsv
+	cat datasets/eswiki.features_reverted.20k.tsv | \
+	revscoring train_test \
+		revscoring.scorer_models.LinearSVCModel \
+		feature_lists.eswiki.damaging \
+		revscoring.languages.indonesian \
+		--label-type=bool \
+		--version=0.2.0 > \
+	models/eswiki.reverted.linear_svc.model
