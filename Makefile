@@ -227,7 +227,7 @@ datasets/eswiki.features_reverted.20k.tsv: datasets/eswiki.rev_reverted.20k.tsv
 	revscoring extract_features \
 		feature_lists.eswiki.damaging \
 		--api=$(eswiki_api) \
-		--language=revscoring.languages.indonesian > \
+		--language=revscoring.languages.spanish > \
 	datasets/eswiki.features_reverted.20k.tsv
 
 models/eswiki.reverted.linear_svc.model: \
@@ -236,7 +236,7 @@ models/eswiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.eswiki.damaging \
-		revscoring.languages.indonesian \
+		revscoring.languages.spanish \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/eswiki.reverted.linear_svc.model
