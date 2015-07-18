@@ -22,6 +22,7 @@ score_processors:
       - enwiki
       - ptwiki
       - fawiki
+      - frwiki
       - trwiki
       - eswiki
       #- simplewiki
