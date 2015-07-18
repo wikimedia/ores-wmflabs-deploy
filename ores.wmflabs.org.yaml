@@ -19,7 +19,7 @@ score_processors:
   defaults:
     score_cache: ores_redis
     scoring_contexts:
-      #- enwiki
+      - enwiki
       - ptwiki
       - fawiki
       - trwiki
