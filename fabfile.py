@@ -43,9 +43,9 @@ This updates all the web workers of ores to the new code and restarts them.
 from fabric.api import sudo, env, cd, roles, shell_env
 
 env.roledefs = {
-    'web': ['ores-web-01.eqiad.wmflabs', 'ores-web-02.eqiad.wmflabs'],
-    'staging': ['ores-staging.eqiad.wmflabs'],
-    'workers': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs']
+    'web': ['ores-web-01.eqiad.wmflabs'],
+    'staging': ['ores-staging-01.eqiad.wmflabs'],
+    'worker': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs']
 }
 env.use_ssh_config = True
 env.shell = '/bin/bash -c'
@@ -62,6 +62,18 @@ def sr(*cmd):
 
 def initialize_staging_server():
     initialize_server('master')
+    restart_uwsgi()
+    restart_celery()
+
+
+def initialize_web_server():
+    initialize_server('deploy')
+    restart_uwsgi()
+
+
+def initialize_worker_server():
+    initialize_server('deploy')
+    restart_celery()
 
 
 def initialize_server(branch='deploy'):
@@ -81,8 +93,6 @@ def initialize_server(branch='deploy'):
     sr(venv_dir + '/bin/python', '-m', 'nltk.downloader',
        '-d', data_dir + '/nltk',
        'wordnet', 'omw', 'stopwords')
-    restart_uwsgi()
-    restart_celery()
 
 
 @roles('web')
@@ -106,6 +116,12 @@ def deploy_web():
     update_git()
     update_virtualenv()
     restart_uwsgi()
+
+
+@roles('worker')
+def deploy_celery():
+    update_git()
+    update_virtualenv()
     restart_celery()
 
 
