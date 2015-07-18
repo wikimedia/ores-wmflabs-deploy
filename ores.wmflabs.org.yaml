@@ -23,6 +23,7 @@ score_processors:
       - ptwiki
       - fawiki
       - trwiki
+      - eswiki
       #- simplewiki
   ores_celery:
     class: ores.score_processors.Celery
@@ -44,6 +45,10 @@ scoring_contexts:
     scorer_models:
       reverted: enwiki_revert
       wp10: enwiki_wp10
+  eswiki:
+    extractor: eswiki_api
+    scorer_models:
+      reverted: eswiki_revert
   ptwiki:
     extractor: ptwiki_api
     scorer_models:
@@ -73,6 +78,9 @@ extractors:
   enwiki_api:
     url: http://en.wikipedia.org/w/api.php
     language: english
+  eswiki_api:
+    url: http://es.wikipedia.org/w/api.php
+    language: spanish
   ptwiki_api:
     url: http://pt.wikipedia.org/w/api.php
     language: portuguese
@@ -97,6 +105,8 @@ scorer_models:
     model_file: models/enwiki.wp10.rf.model
   enwiki_revert:
     model_file: models/enwiki.reverted.linear_svc.model
+  eswiki_revert:
+    model_file: models/eswiki.reverted.linear_svc.model
   ptwiki_revert:
     model_file: models/ptwiki.reverted.linear_svc.model
   frwiki_revert:
@@ -120,5 +130,7 @@ languages:
     module: revscoring.languages.turkish
   persian:
     module: revscoring.languages.persian
+  spanish:
+    module: revscoring.languages.spanish
   french:
     module: revscoring.languages.french
