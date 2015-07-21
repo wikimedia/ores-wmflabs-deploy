@@ -45,8 +45,9 @@ from fabric.api import sudo, env, cd, roles, shell_env
 env.roledefs = {
     'web': ['ores-web-01.eqiad.wmflabs'],
     'staging': ['ores-staging-01.eqiad.wmflabs'],
-    'worker': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs', 
-               'ores-worker-03.eqiad.wmflabs', 'ores-worker-04.eqiad.wmflabs']
+    'worker': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs',
+               'ores-worker-03.eqiad.wmflabs', 'ores-worker-04.eqiad.wmflabs'],
+    'flower': ['ores-web-01.eqiad.wmflabs'],
 }
 env.use_ssh_config = True
 env.shell = '/bin/bash -c'
@@ -63,6 +64,7 @@ def sr(*cmd):
 
 def initialize_staging_server():
     initialize_server('master')
+    setup_flower()
     restart_uwsgi()
     restart_celery()
 
@@ -75,6 +77,12 @@ def initialize_web_server():
 def initialize_worker_server():
     initialize_server('deploy')
     restart_celery()
+
+
+@roles('flower')
+def setup_flower():
+    sr(venv_dir + '/bin/pip', 'install', 'flower')
+    sudo('service flower-ores restart')
 
 
 def initialize_server(branch='deploy'):
