@@ -43,7 +43,7 @@ This updates all the web workers of ores to the new code and restarts them.
 from fabric.api import sudo, env, cd, roles, shell_env
 
 env.roledefs = {
-    'web': ['ores-web-01.eqiad.wmflabs'],
+    'web': ['ores-web-01.eqiad.wmflabs', 'ores-web-02.eqiad.wmflabs'],
     'staging': ['ores-staging-01.eqiad.wmflabs'],
     'worker': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs',
                'ores-worker-03.eqiad.wmflabs', 'ores-worker-04.eqiad.wmflabs'],
