@@ -116,6 +116,7 @@ def restart_uwsgi():
     sudo('service uwsgi-ores-web restart')
 
 
+@roles('worker')
 def restart_celery():
     sudo('service celery-ores-worker restart')
 
