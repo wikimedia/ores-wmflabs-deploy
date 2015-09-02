@@ -43,7 +43,7 @@ models/enwiki.reverted.linear_svc.model: \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.enwiki.damaging \
 		--label-type=bool \
-		--version=0.2.0 > \
+		--version=0.3.0 > \
 	models/enwiki.reverted.linear_svc.model
 
 datasets/enwiki.features_wp10.30k.tsv: datasets/enwiki.rev_wp10.30k.tsv
