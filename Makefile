@@ -33,8 +33,7 @@ datasets/enwiki.features_reverted.20k.tsv: datasets/enwiki.rev_reverted.20k.tsv
 	cat datasets/enwiki.rev_reverted.20k.tsv | \
 	revscoring extract_features \
 		feature_lists.enwiki.damaging \
-		--api=$(enwiki_api) \
-		--language=revscoring.languages.english > \
+		--api=$(enwiki_api) > \
 	datasets/enwiki.features_reverted.20k.tsv
 
 models/enwiki.reverted.linear_svc.model: \
@@ -43,7 +42,6 @@ models/enwiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.enwiki.damaging \
-		revscoring.languages.english \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/enwiki.reverted.linear_svc.model
@@ -52,8 +50,7 @@ datasets/enwiki.features_wp10.30k.tsv: datasets/enwiki.rev_wp10.30k.tsv
 	cat datasets/enwiki.rev_wp10.30k.tsv | \
 	revscoring extract_features \
 		feature_lists.enwiki.wp10 \
-		--api=$(enwiki_api) \
-		--language=revscoring.languages.english > \
+		--api=$(enwiki_api) > \
 	datasets/enwiki.features_wp10.30k.tsv
 
 models/enwiki.wp10.rf.model: datasets/enwiki.features_wp10.30k.tsv
@@ -62,7 +59,6 @@ models/enwiki.wp10.rf.model: datasets/enwiki.features_wp10.30k.tsv
 	revscoring train_test \
 		revscoring.scorer_models.RFModel \
 		feature_lists.enwiki.wp10 \
-		revscoring.languages.english \
 		-p 'n_estimators=501' \
 		-p 'min_samples_leaf=8' \
 		--version=0.1.0 > \
@@ -82,8 +78,7 @@ datasets/fawiki.features_reverted.20k.tsv: datasets/fawiki.rev_reverted.20k.tsv
 	cat datasets/fawiki.rev_reverted.20k.tsv | \
 	revscoring extract_features \
 		feature_lists.fawiki.damaging \
-		--api=$(fawiki_api) \
-		--language=revscoring.languages.persian > \
+		--api=$(fawiki_api) > \
 	datasets/fawiki.features_reverted.20k.tsv
 
 models/fawiki.reverted.linear_svc.model: \
@@ -92,7 +87,6 @@ models/fawiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.fawiki.damaging \
-		revscoring.languages.persian \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/fawiki.reverted.linear_svc.model
@@ -111,8 +105,7 @@ datasets/frwiki.features_reverted.20k.tsv: datasets/frwiki.rev_reverted.20k.tsv
 	cat datasets/frwiki.rev_reverted.20k.tsv | \
 	revscoring extract_features \
 		feature_lists.frwiki.damaging \
-		--api=$(frwiki_api) \
-		--language=revscoring.languages.french > \
+		--api=$(frwiki_api) > \
 	datasets/frwiki.features_reverted.20k.tsv
 
 models/frwiki.reverted.linear_svc.model: \
@@ -121,7 +114,6 @@ models/frwiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.frwiki.damaging \
-		revscoring.languages.french \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/frwiki.reverted.linear_svc.model
@@ -139,8 +131,7 @@ datasets/ptwiki.features_reverted.20k.tsv: datasets/ptwiki.rev_reverted.20k.tsv
 	cat datasets/ptwiki.rev_reverted.20k.tsv | \
 	revscoring extract_features \
 		feature_lists.ptwiki.damaging \
-		--api=$(ptwiki_api) \
-		--language=revscoring.languages.portuguese > \
+		--api=$(ptwiki_api) > \
 	datasets/ptwiki.features_reverted.20k.tsv
 
 models/ptwiki.reverted.linear_svc.model: \
@@ -149,7 +140,6 @@ models/ptwiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.ptwiki.damaging \
-		revscoring.languages.portuguese \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/ptwiki.reverted.linear_svc.model
@@ -168,8 +158,7 @@ datasets/trwiki.features_reverted.20k.tsv: datasets/trwiki.rev_reverted.20k.tsv
 	cat datasets/trwiki.rev_reverted.20k.tsv | \
 	revscoring extract_features \
 		feature_lists.trwiki.damaging \
-		--api=$(trwiki_api) \
-		--language=revscoring.languages.turkish > \
+		--api=$(trwiki_api) > \
 	datasets/trwiki.features_reverted.20k.tsv
 
 models/trwiki.reverted.linear_svc.model: \
@@ -178,7 +167,6 @@ models/trwiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.trwiki.damaging \
-		revscoring.languages.turkish \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/trwiki.reverted.linear_svc.model
@@ -197,8 +185,7 @@ datasets/idwiki.features_reverted.20k.tsv: datasets/idwiki.rev_reverted.20k.tsv
 	cat datasets/idwiki.rev_reverted.20k.tsv | \
 	revscoring extract_features \
 		feature_lists.idwiki.damaging \
-		--api=$(idwiki_api) \
-		--language=revscoring.languages.indonesian > \
+		--api=$(idwiki_api) > \
 	datasets/idwiki.features_reverted.20k.tsv
 
 models/idwiki.reverted.linear_svc.model: \
@@ -207,7 +194,6 @@ models/idwiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.idwiki.damaging \
-		revscoring.languages.indonesian \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/idwiki.reverted.linear_svc.model
@@ -226,8 +212,7 @@ datasets/eswiki.features_reverted.20k.tsv: datasets/eswiki.rev_reverted.20k.tsv
 	cat datasets/eswiki.rev_reverted.20k.tsv | \
 	revscoring extract_features \
 		feature_lists.eswiki.damaging \
-		--api=$(eswiki_api) \
-		--language=revscoring.languages.spanish > \
+		--api=$(eswiki_api) > \
 	datasets/eswiki.features_reverted.20k.tsv
 
 models/eswiki.reverted.linear_svc.model: \
@@ -236,7 +221,6 @@ models/eswiki.reverted.linear_svc.model: \
 	revscoring train_test \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.eswiki.damaging \
-		revscoring.languages.spanish \
 		--label-type=bool \
 		--version=0.2.0 > \
 	models/eswiki.reverted.linear_svc.model
