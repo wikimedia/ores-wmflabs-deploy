@@ -61,7 +61,7 @@ models/enwiki.wp10.rf.model: datasets/enwiki.features_wp10.30k.tsv
 		feature_lists.enwiki.wp10 \
 		-p 'n_estimators=501' \
 		-p 'min_samples_leaf=8' \
-		--version=0.1.0 > \
+		--version=0.2.0 > \
 	models/enwiki.wp10.rf.model
 
 
@@ -88,7 +88,7 @@ models/fawiki.reverted.linear_svc.model: \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.fawiki.damaging \
 		--label-type=bool \
-		--version=0.2.0 > \
+		--version=0.3.0 > \
 	models/fawiki.reverted.linear_svc.model
 
 
@@ -115,7 +115,7 @@ models/frwiki.reverted.linear_svc.model: \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.frwiki.damaging \
 		--label-type=bool \
-		--version=0.2.0 > \
+		--version=0.3.0 > \
 	models/frwiki.reverted.linear_svc.model
 
 ###################### Portuguese Wikipedia ####################################
@@ -141,7 +141,7 @@ models/ptwiki.reverted.linear_svc.model: \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.ptwiki.damaging \
 		--label-type=bool \
-		--version=0.2.0 > \
+		--version=0.3.0 > \
 	models/ptwiki.reverted.linear_svc.model
 
 
@@ -168,7 +168,7 @@ models/trwiki.reverted.linear_svc.model: \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.trwiki.damaging \
 		--label-type=bool \
-		--version=0.2.0 > \
+		--version=0.3.0 > \
 	models/trwiki.reverted.linear_svc.model
 
 
@@ -195,7 +195,7 @@ models/idwiki.reverted.linear_svc.model: \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.idwiki.damaging \
 		--label-type=bool \
-		--version=0.2.0 > \
+		--version=0.3.0 > \
 	models/idwiki.reverted.linear_svc.model
 
 
@@ -222,5 +222,5 @@ models/eswiki.reverted.linear_svc.model: \
 		revscoring.scorer_models.LinearSVCModel \
 		feature_lists.eswiki.damaging \
 		--label-type=bool \
-		--version=0.2.0 > \
+		--version=0.3.0 > \
 	models/eswiki.reverted.linear_svc.model
