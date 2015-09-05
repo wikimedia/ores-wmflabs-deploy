@@ -18,4 +18,4 @@ if __name__ == '__main__':
         format='%(asctime)s %(levelname)s:%(name)s -- %(message)s'
     )
     application.debug = True
-    application.run(host="0.0.0.0", debug = True)
+    application.run(host="0.0.0.0", threaded=True, debug=True)
