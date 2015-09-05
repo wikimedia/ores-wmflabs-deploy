@@ -33,6 +33,7 @@ score_processors:
     CELERY_ACCEPT_CONTENT: ['pickle']
     CELERY_TASK_SERIALIZER: 'pickle'
     CELERY_RESULT_SERIALIZER: 'pickle'
+    CELERYD_CONCURRENCY: 16
     timeout: 15 # seconds
   timeout:
     class: ores.score_processors.Timeout
