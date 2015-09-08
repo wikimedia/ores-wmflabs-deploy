@@ -138,7 +138,7 @@ def deploy_celery():
 @roles('web')
 def update_virtualenv():
     with cd(venv_dir):
-        sr(venv_dir + '/bin/pip', 'install', '--upgrade',
+        sr(venv_dir + '/bin/pip', 'install',
            '-r', config_dir + '/requirements.txt')
 
 
