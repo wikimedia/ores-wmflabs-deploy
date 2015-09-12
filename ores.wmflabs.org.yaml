@@ -77,27 +77,21 @@ extractors:
   defaults:
     class: revscoring.extractors.APIExtractor
     user_agent: Object Revision Evaluation Service
+    timeout: 5
   enwiki_api:
-    url: http://en.wikipedia.org/w/api.php
-    language: english
+    host: https://en.wikipedia.org
   eswiki_api:
-    url: http://es.wikipedia.org/w/api.php
-    language: spanish
+    host: https://es.wikipedia.org
   ptwiki_api:
-    url: http://pt.wikipedia.org/w/api.php
-    language: portuguese
+    host: https://pt.wikipedia.org
   fawiki_api:
-    url: https://fa.wikipedia.org/w/api.php
-    language: persian
+    host: https://fa.wikipedia.org
   trwiki_api:
-    url: https://tr.wikipedia.org/w/api.php
-    language: turkish
+    host: https://tr.wikipedia.org
   frwiki_api:
-    url: https://fr.wikipedia.org/w/api.php
-    language: french
+    host: https://fr.wikipedia.org
   simplewiki_api:
-    url: https://simple.wikipedia.org/w/api.php
-    language: english
+    host: https://simple.wikipedia.org
 
 # Scorer models
 scorer_models:
