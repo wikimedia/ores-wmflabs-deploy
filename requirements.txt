@@ -1,2 +1,2 @@
-ores >= 0.5.0
+ores >= 0.5.1
 redis
