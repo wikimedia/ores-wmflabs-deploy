@@ -109,6 +109,7 @@ def update_git(branch='deploy'):
     with cd(config_dir):
         sr('git', 'fetch', 'origin')
         sr('git', 'reset', '--hard', 'origin/%s' % branch)
+        sr('git', 'submodule', 'update', '--init', '--recursive')
 
 
 @roles('web')
@@ -124,18 +125,16 @@ def restart_celery():
 @roles('web')
 def deploy_web():
     update_git()
-    update_virtualenv()
     restart_uwsgi()
 
 
 @roles('worker')
 def deploy_celery():
     update_git()
-    update_virtualenv()
     restart_celery()
 
 
-@roles('web')
+@roles('web', 'worker')
 def update_virtualenv():
     with cd(venv_dir):
         sr(venv_dir + '/bin/pip', 'install',
@@ -145,7 +144,6 @@ def update_virtualenv():
 @roles('staging')
 def stage():
     update_git('master')
-    update_virtualenv()
     restart_uwsgi()
     restart_celery()
 
