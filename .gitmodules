@@ -1,0 +1,3 @@
+[submodule "ores"]
+	path = ores
+	url = https://github.com/wiki-ai/ores.git
