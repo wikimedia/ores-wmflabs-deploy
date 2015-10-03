@@ -40,7 +40,7 @@ This can be simply run by:
 
 This updates all the web workers of ores to the new code and restarts them.
 """
-from fabric.api import sudo, env, cd, roles, shell_env
+from fabric.api import cd, env, roles, shell_env, sudo
 
 env.roledefs = {
     'web': ['ores-web-01.eqiad.wmflabs', 'ores-web-02.eqiad.wmflabs'],
