@@ -21,7 +21,7 @@ application = server.configure(config)
 
 
 if __name__ == '__main__':
-    logging.setLevel(logging.INFO)
+    logging.basicConfig(level=logging.INFO)
     logging.getLogger('ores.metrics_collectors').setLevel(logging.DEBUG)
 
     application.debug = True
