@@ -142,6 +142,12 @@ def update_virtualenv():
 
 
 @roles('staging')
+def update_and_stage():
+    update_virtualenv()
+    stage()
+
+
+@roles('staging')
 def stage():
     update_git('master')
     restart_uwsgi()
