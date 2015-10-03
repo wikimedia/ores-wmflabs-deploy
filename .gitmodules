@@ -1,3 +1,3 @@
 [submodule "ores"]
-	path = ores
+	path = submodules/ores
 	url = https://github.com/wiki-ai/ores.git
