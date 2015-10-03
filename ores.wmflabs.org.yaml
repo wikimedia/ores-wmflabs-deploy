@@ -7,7 +7,7 @@ ores:
   data_paths:
     nltk: /srv/ores/data/nltk/
 
-# Score caches
+# Score cache options
 score_caches:
   ores_redis:
     class: ores.score_caches.Redis
@@ -15,10 +15,20 @@ score_caches:
     prefix: "ores"
     socket_timeout: 15
 
+# Metrics collection options
+metrics_collectors:
+  local_logging:
+    class: ores.metrics_collectors.Logger
+  wmflabs_statsd:
+    class: ores.metrics_collectors.Statsd
+    host: labmon1001.eqiad.wmnet
+    prefix: ores.{hostname}
+
 # Score processor
 score_processors:
   defaults:
     score_cache: ores_redis
+    metrics_collector: wmflabs_statsd
     scoring_contexts:
       - enwiki
       - ptwiki
@@ -36,9 +46,6 @@ score_processors:
     CELERY_TASK_SERIALIZER: 'pickle'
     CELERY_RESULT_SERIALIZER: 'pickle'
     CELERYD_CONCURRENCY: 16
-    timeout: 15 # seconds
-  timeout:
-    class: ores.score_processors.Timeout
     timeout: 15 # seconds
 
 
@@ -92,8 +99,6 @@ extractors:
     host: https://tr.wikipedia.org
   frwiki_api:
     host: https://fr.wikipedia.org
-  simplewiki_api:
-    host: https://simple.wikipedia.org
 
 # Scorer models
 scorer_models:
@@ -115,8 +120,6 @@ scorer_models:
     model_file: models/ptwiki.reverted.linear_svc.model
   trwiki_revert:
     model_file: models/trwiki.reverted.linear_svc.model
-  simplewiki_revert:
-    model_file: models/simplewiki.reverted.linear_svc.model
 
 # Languages
 languages:

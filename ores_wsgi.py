@@ -14,6 +14,7 @@ if 'data_paths' in config['ores'] and \
     import nltk
     nltk.data.path.append(config['ores']['data_paths']['nltk'])
 
+
 application = server.configure(config)
 
 
@@ -22,5 +23,7 @@ if __name__ == '__main__':
         level=logging.INFO,
         format='%(asctime)s %(levelname)s:%(name)s -- %(message)s'
     )
+    logging.getLogger('ores.metrics_collectors').setLevel(logging.DEBUG)
+
     application.debug = True
     application.run(host="0.0.0.0", threaded=True, debug=True)
