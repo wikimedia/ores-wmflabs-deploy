@@ -9,6 +9,11 @@ from ores.wsgi import server
 
 config = yamlconf.load(open("ores.wmflabs.org.yaml"))
 
+if 'data_paths' in config['ores'] and \
+    'nltk' in config['ores']['data_paths']:
+    import nltk
+    nltk.data.path.append(config['ores']['data_paths']['nltk'])
+
 application = server.configure(config)
 
 

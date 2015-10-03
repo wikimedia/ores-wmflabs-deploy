@@ -6,6 +6,11 @@ from ores.score_processors import Celery
 
 config = yamlconf.load(open("ores.wmflabs.org.yaml"))
 
+if 'data_paths' in config['ores'] and \
+    'nltk' in config['ores']['data_paths']:
+    import nltk
+    nltk.data.path.append(config['ores']['data_paths']['nltk'])
+
 score_processor = Celery.from_config(config, config['ores']['score_processor'])
 application = score_processor.application
 
