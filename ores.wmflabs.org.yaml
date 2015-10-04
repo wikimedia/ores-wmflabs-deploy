@@ -56,6 +56,8 @@ scoring_contexts:
     scorer_models:
       reverted: enwiki_revert
       wp10: enwiki_wp10
+      damaging: enwiki_damaging
+      goodfaith: enwiki_goodfaith
   eswiki:
     extractor: eswiki_api
     scorer_models:
@@ -64,10 +66,14 @@ scoring_contexts:
     extractor: ptwiki_api
     scorer_models:
       reverted: ptwiki_revert
+      damaging: ptwiki_damaging
+      goodfaith: ptwiki_goodfaith
   fawiki:
     extractor: fawiki_api
     scorer_models:
       reverted: fawiki_revert
+      damaging: fawiki_damaging
+      goodfaith: fawiki_goodfaith
   trwiki:
     extractor: trwiki_api
     scorer_models:
@@ -108,16 +114,26 @@ scorer_models:
     model_file: models/enwiki.wp10.rf.model
   enwiki_revert:
     model_file: models/enwiki.reverted.linear_svc.model
+  enwiki_damaging:
+    model_file: models/enwiki.damaging.linear_svc.model
+  enwiki_goodfaith:
+    model_file: models/enwiki.goodfaith.linear_svc.model
   eswiki_revert:
     model_file: models/eswiki.reverted.linear_svc.model
   ptwiki_revert:
     model_file: models/ptwiki.reverted.linear_svc.model
+  ptwiki_damaging:
+    model_file: models/ptwiki.damaging.linear_svc.model
+  ptwiki_goodfaith:
+    model_file: models/ptwiki.goodfaith.linear_svc.model
   frwiki_revert:
     model_file: models/frwiki.reverted.linear_svc.model
   fawiki_revert:
     model_file: models/fawiki.reverted.linear_svc.model
-  ptwiki_revert:
-    model_file: models/ptwiki.reverted.linear_svc.model
+  fawiki_damaging:
+    model_file: models/fawiki.damaging.linear_svc.model
+  fawiki_goodfaith:
+    model_file: models/fawiki.goodfaith.linear_svc.model
   trwiki_revert:
     model_file: models/trwiki.reverted.linear_svc.model
 
