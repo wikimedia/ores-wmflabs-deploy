@@ -104,7 +104,7 @@ def initialize_server(branch='deploy'):
        'wordnet', 'omw', 'stopwords')
 
 
-@roles('web')
+@roles('web', 'worker')
 def update_git(branch='deploy'):
     with cd(config_dir):
         sr('git', 'fetch', 'origin')
@@ -136,9 +136,16 @@ def deploy_celery():
 
 @roles('web', 'worker')
 def update_virtualenv():
+    update_git()
     with cd(venv_dir):
         sr(venv_dir + '/bin/pip', 'install',
            '-r', config_dir + '/requirements.txt')
+
+
+@roles('staging')
+def update_and_stage():
+    update_virtualenv()
+    stage()
 
 
 @roles('staging')
