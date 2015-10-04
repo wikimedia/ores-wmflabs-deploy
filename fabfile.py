@@ -136,6 +136,7 @@ def deploy_celery():
 
 @roles('web', 'worker')
 def update_virtualenv():
+    update_git()
     with cd(venv_dir):
         sr(venv_dir + '/bin/pip', 'install',
            '-r', config_dir + '/requirements.txt')
