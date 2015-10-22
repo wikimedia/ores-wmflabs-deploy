@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 import logging
+import logging.config
 
 import yamlconf
 
 from ores.wsgi import server
 
-config = yamlconf.load(open("ores.wmflabs.org.yaml"))
+with open("ores.wmflabs.org.yaml") as f:
+    config = yamlconf.load(f)
+
+with open("logging_config.yaml") as f:
+    logging_config = yamlconf.load(f)
+    logging.config.dictConfig(logging_config)
 
 if 'data_paths' in config['ores'] and \
    'nltk' in config['ores']['data_paths']:
@@ -21,7 +27,6 @@ application = server.configure(config)
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
     logging.getLogger('ores.metrics_collectors').setLevel(logging.DEBUG)
 
     application.debug = True

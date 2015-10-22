@@ -1,0 +1,35 @@
+version: 1
+
+loggers:
+  "":
+    level: WARNING
+    filters: [ores, celery]
+    handlers: [stdout]
+  louder:
+    level: INFO
+    filters: [ores, celery, revscoring]
+    handlers: [stdout]
+  crazy:
+    level: DEBUG
+    filters: [ores, celery, revscoring]
+    handlers: [stdout]
+
+
+handlers:
+  stdout:
+    class: logging.StreamHandler
+    formatter: basic_human
+    level: DEBUG
+    stream: ext://sys.stdout
+
+formatters:
+  basic_human: 
+    format: "%(asctime)s %(levelname)s:%(name)s -- %(message)s"
+
+filters:
+  ores:
+    name: ores
+  revscoring:
+    name: revscoring
+  celery:
+    name: celery
