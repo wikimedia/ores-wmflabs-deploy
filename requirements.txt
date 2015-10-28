@@ -1,3 +1,4 @@
 redis
 ores >= 0.5.4
+wb-vandalism >= 0.1.4
 statsd
