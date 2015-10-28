@@ -36,6 +36,7 @@ score_processors:
       - frwiki
       - trwiki
       - eswiki
+      - wikidatawiki
       #- simplewiki
   ores_celery:
     class: ores.score_processors.Celery
@@ -86,6 +87,10 @@ scoring_contexts:
     extractor: simplewiki_api
     scorer_models:
       reverted: simplewiki_revert
+  wikidatawiki:
+    extractor: wikidata_api
+    scorer_models:
+      reverted: wikidata_revert
 
 # Feature extractors
 extractors:
@@ -105,6 +110,8 @@ extractors:
     host: https://tr.wikipedia.org
   frwiki_api:
     host: https://fr.wikipedia.org
+  wikidata_api:
+    host: https://wikidata.org
 
 # Scorer models
 scorer_models:
@@ -136,18 +143,5 @@ scorer_models:
     model_file: models/fawiki.goodfaith.linear_svc.model
   trwiki_revert:
     model_file: models/trwiki.reverted.linear_svc.model
-
-# Languages
-languages:
-  english:
-    module: revscoring.languages.english
-  portuguese:
-    module: revscoring.languages.portuguese
-  turkish:
-    module: revscoring.languages.turkish
-  persian:
-    module: revscoring.languages.persian
-  spanish:
-    module: revscoring.languages.spanish
-  french:
-    module: revscoring.languages.french
+  wikidata_revert:
+    model_file: submodules/wb-vandalism/models/wikidata.reverted.linear_svc.model
