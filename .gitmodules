@@ -1,3 +1,6 @@
 [submodule "ores"]
 	path = submodules/ores
 	url = https://github.com/wiki-ai/ores.git
+[submodule "wb-vandalism"]
+	path = submodules/wb-vandalism
+	url = https://github.com/wiki-ai/wb-vandalism
