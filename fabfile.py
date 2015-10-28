@@ -135,8 +135,8 @@ def deploy_celery():
 
 
 @roles('web', 'worker')
-def update_virtualenv():
-    update_git()
+def update_virtualenv(branch='deploy'):
+    update_git(branch)
     with cd(venv_dir):
         sr(venv_dir + '/bin/pip', 'install',
            '-r', config_dir + '/requirements.txt')
@@ -144,7 +144,7 @@ def update_virtualenv():
 
 @roles('staging')
 def update_and_stage():
-    update_virtualenv()
+    update_virtualenv('master')
     stage()
 
 
