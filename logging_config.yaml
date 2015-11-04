@@ -2,7 +2,7 @@ version: 1
 
 loggers:
   "":
-    level: WARNING
+    level: DEBUG
     filters: [ores, celery]
     handlers: [stdout]
   louder:
