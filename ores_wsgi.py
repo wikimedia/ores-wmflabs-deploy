@@ -30,4 +30,4 @@ if __name__ == '__main__':
     logging.getLogger('ores.metrics_collectors').setLevel(logging.DEBUG)
 
     application.debug = True
-    application.run(host="0.0.0.0", threaded=True, debug=True)
+    application.run(host="0.0.0.0", processes=64, debug=True)
