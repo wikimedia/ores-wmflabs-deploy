@@ -28,16 +28,21 @@ metrics_collectors:
 score_processors:
   defaults:
     score_cache: ores_redis
-    metrics_collector: wmflabs_statsd
+    metrics_collector: local_logging #wmflabs_statsd
     scoring_contexts:
+      - dewiki
       - enwiki
-      - ptwiki
+      - eswiki
       - fawiki
       - frwiki
+      - hewiki
+      - idwiki
+      - itwiki
+      - nlwiki
+      - ptwiki
       - trwiki
-      - eswiki
+      - viwiki
       - wikidatawiki
-      #- simplewiki
   ores_celery:
     class: ores.score_processors.Celery
     BROKER_URL: redis://ores-redis
@@ -53,6 +58,10 @@ score_processors:
 
 # Scorers
 scoring_contexts:
+  dewiki:
+    extractor: dewiki_api
+    scorer_models:
+      reverted: dewiki_revert
   enwiki:
     extractor: enwiki_api
     scorer_models:
@@ -64,30 +73,47 @@ scoring_contexts:
     extractor: eswiki_api
     scorer_models:
       reverted: eswiki_revert
-  ptwiki:
-    extractor: ptwiki_api
-    scorer_models:
-      reverted: ptwiki_revert
-      damaging: ptwiki_damaging
-      goodfaith: ptwiki_goodfaith
   fawiki:
     extractor: fawiki_api
     scorer_models:
       reverted: fawiki_revert
       damaging: fawiki_damaging
       goodfaith: fawiki_goodfaith
-  trwiki:
-    extractor: trwiki_api
-    scorer_models:
-      reverted: trwiki_revert
   frwiki:
     extractor: frwiki_api
     scorer_models:
       reverted: frwiki_revert
-  simplewiki:
-    extractor: simplewiki_api
+      wp10: frwiki_wp10
+  hewiki:
+    extractor: hewiki_api
     scorer_models:
-      reverted: simplewiki_revert
+      reverted: hewiki_revert
+  idwiki:
+    extractor: idwiki_api
+    scorer_models:
+      reverted: idwiki_revert
+  itwiki:
+    extractor: itwiki_api
+    scorer_models:
+      reverted: itwiki_revert
+  nlwiki:
+    extractor: nlwiki_api
+    scorer_models:
+      reverted: nlwiki_revert
+  ptwiki:
+    extractor: ptwiki_api
+    scorer_models:
+      reverted: ptwiki_revert
+      damaging: ptwiki_damaging
+      goodfaith: ptwiki_goodfaith
+  trwiki:
+    extractor: trwiki_api
+    scorer_models:
+      reverted: trwiki_revert
+  viwiki:
+    extractor: viwiki_api
+    scorer_models:
+      reverted: viwiki_revert
   wikidatawiki:
     extractor: wikidata_api
     scorer_models:
@@ -97,20 +123,32 @@ scoring_contexts:
 extractors:
   defaults:
     class: revscoring.extractors.APIExtractor
-    user_agent: Object Revision Evaluation Service
+    user_agent: Object Revision Evaluation Service <ahalfaker@wikimedia.org>
     timeout: 5
+  dewiki_api:
+    host: https://de.wikipedia.org
   enwiki_api:
     host: https://en.wikipedia.org
   eswiki_api:
     host: https://es.wikipedia.org
-  ptwiki_api:
-    host: https://pt.wikipedia.org
   fawiki_api:
     host: https://fa.wikipedia.org
-  trwiki_api:
-    host: https://tr.wikipedia.org
   frwiki_api:
     host: https://fr.wikipedia.org
+  hewiki_api:
+    host: https://he.wikipedia.org
+  idwiki_api:
+    host: https://id.wikipedia.org
+  itwiki_api:
+    host: https://it.wikipedia.org
+  nlwiki_api:
+    host: https://nl.wikipedia.org
+  ptwiki_api:
+    host: https://pt.wikipedia.org
+  trwiki_api:
+    host: https://tr.wikipedia.org
+  viwiki_api:
+    host: https://vi.wikipedia.org
   wikidata_api:
     host: https://wikidata.org
 
@@ -118,31 +156,49 @@ extractors:
 scorer_models:
   defaults:
     class: revscoring.scorer_models.MLScorerModel
+  dewiki_revert:
+    model_file: submodules/editquality/models/dewiki.reverted.linear_svc.model
   enwiki_wp10:
-    model_file: models/enwiki.wp10.rf.model
+    model_file: submodules/wikiclass/models/enwiki.wp10.rf.model
   enwiki_revert:
-    model_file: models/enwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/enwiki.reverted.linear_svc.model
   enwiki_damaging:
-    model_file: models/enwiki.damaging.linear_svc.model
+    model_file: submodules/editquality/models/enwiki.damaging.linear_svc.model
   enwiki_goodfaith:
-    model_file: models/enwiki.goodfaith.linear_svc.model
+    model_file: submodules/editquality/models/enwiki.goodfaith.linear_svc.model
   eswiki_revert:
-    model_file: models/eswiki.reverted.linear_svc.model
-  ptwiki_revert:
-    model_file: models/ptwiki.reverted.linear_svc.model
-  ptwiki_damaging:
-    model_file: models/ptwiki.damaging.linear_svc.model
-  ptwiki_goodfaith:
-    model_file: models/ptwiki.goodfaith.linear_svc.model
-  frwiki_revert:
-    model_file: models/frwiki.reverted.linear_svc.model
-  fawiki_revert:
-    model_file: models/fawiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/eswiki.reverted.linear_svc.model
   fawiki_damaging:
-    model_file: models/fawiki.damaging.linear_svc.model
+    model_file: submodules/editquality/models/fawiki.damaging.linear_svc.model
   fawiki_goodfaith:
-    model_file: models/fawiki.goodfaith.linear_svc.model
+    model_file: submodules/editquality/models/fawiki.goodfaith.linear_svc.model
+  fawiki_revert:
+    model_file: submodules/editquality/models/fawiki.reverted.linear_svc.model
+  frwiki_revert:
+    model_file: submodules/editquality/models/frwiki.reverted.linear_svc.model
+  frwiki_wp10:
+    model_file: submodules/wikiclass/models/frwiki.wp10.rf.model
+  hewiki_revert:
+    model_file: submodules/editquality/models/hewiki.reverted.linear_svc.model
+  idwiki_revert:
+    model_file: submodules/editquality/models/idwiki.reverted.linear_svc.model
+  itwiki_revert:
+    model_file: submodules/editquality/models/itwiki.reverted.linear_svc.model
+  nlwiki_revert:
+    model_file: submodules/editquality/models/nlwiki.reverted.linear_svc.model
+  ptwiki_damaging:
+    model_file: submodules/editquality/models/ptwiki.damaging.linear_svc.model
+  ptwiki_goodfaith:
+    model_file: submodules/editquality/models/ptwiki.goodfaith.linear_svc.model
+  ptwiki_revert:
+    model_file: submodules/editquality/models/ptwiki.reverted.linear_svc.model
+  trwiki_damaging:
+    model_file: submodules/editquality/models/trwiki.damaging.linear_svc.model
+  trwiki_goodfaith:
+    model_file: submodules/editquality/models/trwiki.goodfaith.linear_svc.model
   trwiki_revert:
-    model_file: models/trwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/trwiki.reverted.linear_svc.model
+  viwiki_revert:
+    model_file: submodules/editquality/models/viwiki.reverted.linear_svc.model
   wikidata_revert:
     model_file: submodules/wb-vandalism/models/wikidata.reverted.linear_svc.model

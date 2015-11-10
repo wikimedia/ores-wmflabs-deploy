@@ -4,3 +4,9 @@
 [submodule "wb-vandalism"]
 	path = submodules/wb-vandalism
 	url = https://github.com/wiki-ai/wb-vandalism
+[submodule "submodules/wikiclass"]
+	path = submodules/wikiclass
+	url = https://github.com/wiki-ai/wikiclass
+[submodule "submodules/editquality"]
+	path = submodules/editquality
+	url = https://github.com/wiki-ai/editquality
