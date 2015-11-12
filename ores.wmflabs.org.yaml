@@ -28,7 +28,7 @@ metrics_collectors:
 score_processors:
   defaults:
     score_cache: ores_redis
-    metrics_collector: local_logging #wmflabs_statsd
+    metrics_collector: wmflabs_statsd
     scoring_contexts:
       - dewiki
       - enwiki
@@ -110,6 +110,8 @@ scoring_contexts:
     extractor: trwiki_api
     scorer_models:
       reverted: trwiki_revert
+      damaging: trwiki_damaging
+      goodfaith: trwiki_goodfaith
   viwiki:
     extractor: viwiki_api
     scorer_models:
