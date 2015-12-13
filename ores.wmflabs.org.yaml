@@ -40,6 +40,7 @@ score_processors:
       - itwiki
       - nlwiki
       - ptwiki
+      - testwiki
       - trwiki
       - viwiki
       - wikidatawiki
@@ -106,6 +107,10 @@ scoring_contexts:
       reverted: ptwiki_revert
       damaging: ptwiki_damaging
       goodfaith: ptwiki_goodfaith
+  testwiki:
+    extractor: testwiki_offline
+    scorer_models:
+      reverted: testwiki_revert
   trwiki:
     extractor: trwiki_api
     scorer_models:
@@ -147,6 +152,8 @@ extractors:
     host: https://nl.wikipedia.org
   ptwiki_api:
     host: https://pt.wikipedia.org
+  testwiki_offline:
+    class: revscoring.extractors.OfflineExtractor
   trwiki_api:
     host: https://tr.wikipedia.org
   viwiki_api:
@@ -194,6 +201,9 @@ scorer_models:
     model_file: submodules/editquality/models/ptwiki.goodfaith.linear_svc.model
   ptwiki_revert:
     model_file: submodules/editquality/models/ptwiki.reverted.linear_svc.model
+  testwiki_revert:
+    class: ores.scorer_models.RevIdScorer
+    version: 0.0.1
   trwiki_damaging:
     model_file: submodules/editquality/models/trwiki.damaging.linear_svc.model
   trwiki_goodfaith:
