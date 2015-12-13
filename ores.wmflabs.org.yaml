@@ -213,4 +213,4 @@ scorer_models:
   viwiki_revert:
     model_file: submodules/editquality/models/viwiki.reverted.linear_svc.model
   wikidata_revert:
-    model_file: submodules/wb-vandalism/models/wikidata.reverted.linear_svc.model
+    model_file: submodules/wb-vandalism/models/wikidata.reverted.rf.model
