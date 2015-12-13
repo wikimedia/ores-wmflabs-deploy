@@ -10,3 +10,6 @@
 [submodule "submodules/editquality"]
 	path = submodules/editquality
 	url = https://github.com/wiki-ai/editquality
+[submodule "submodules/revscoring"]
+	path = submodules/revscoring
+	url = https://github.com/wiki-ai/revscoring
