@@ -33,6 +33,7 @@ score_processors:
       - dewiki
       - enwiki
       - eswiki
+      - etwiki
       - fawiki
       - frwiki
       - hewiki
@@ -42,6 +43,7 @@ score_processors:
       - ptwiki
       - testwiki
       - trwiki
+      - ukwiki
       - viwiki
       - wikidatawiki
   ores_celery:
@@ -74,6 +76,10 @@ scoring_contexts:
     extractor: eswiki_api
     scorer_models:
       reverted: eswiki_revert
+  etwiki:
+    extractor: etwiki_api
+    scorer_models:
+      reverted: etwiki_revert
   fawiki:
     extractor: fawiki_api
     scorer_models:
@@ -121,6 +127,10 @@ scoring_contexts:
     extractor: viwiki_api
     scorer_models:
       reverted: viwiki_revert
+  ukwiki:
+    extractor: ukwiki_api
+    scorer_models:
+      reverted: ukwiki_revert
   wikidatawiki:
     extractor: wikidata_api
     scorer_models:
@@ -138,6 +148,8 @@ extractors:
     host: https://en.wikipedia.org
   eswiki_api:
     host: https://es.wikipedia.org
+  etwiki_api:
+    host: https://et.wikipedia.org
   fawiki_api:
     host: https://fa.wikipedia.org
   frwiki_api:
@@ -156,6 +168,8 @@ extractors:
     class: revscoring.extractors.OfflineExtractor
   trwiki_api:
     host: https://tr.wikipedia.org
+  ukwiki_api:
+    host: https://uk.wikipedia.org
   viwiki_api:
     host: https://vi.wikipedia.org
   wikidata_api:
@@ -166,51 +180,55 @@ scorer_models:
   defaults:
     class: revscoring.scorer_models.MLScorerModel
   dewiki_revert:
-    model_file: submodules/editquality/models/dewiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/dewiki.reverted-user.linear_svc.model
   enwiki_wp10:
     model_file: submodules/wikiclass/models/enwiki.wp10.rf.model
   enwiki_revert:
-    model_file: submodules/editquality/models/enwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/enwiki.reverted-user.linear_svc.model
   enwiki_damaging:
-    model_file: submodules/editquality/models/enwiki.damaging.linear_svc.model
+    model_file: submodules/editquality/models/enwiki.damaging-user.linear_svc.model
   enwiki_goodfaith:
-    model_file: submodules/editquality/models/enwiki.goodfaith.linear_svc.model
+    model_file: submodules/editquality/models/enwiki.goodfaith-user.linear_svc.model
   eswiki_revert:
-    model_file: submodules/editquality/models/eswiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/eswiki.reverted-user.linear_svc.model
+  etwiki_revert:
+    model_file: submodules/editquality/models/etwiki.reverted-user.linear_svc.model
   fawiki_damaging:
-    model_file: submodules/editquality/models/fawiki.damaging.linear_svc.model
+    model_file: submodules/editquality/models/fawiki.damaging-user.linear_svc.model
   fawiki_goodfaith:
-    model_file: submodules/editquality/models/fawiki.goodfaith.linear_svc.model
+    model_file: submodules/editquality/models/fawiki.goodfaith-user.linear_svc.model
   fawiki_revert:
-    model_file: submodules/editquality/models/fawiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/fawiki.reverted-user.linear_svc.model
   frwiki_revert:
-    model_file: submodules/editquality/models/frwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/frwiki.reverted-user.linear_svc.model
   frwiki_wp10:
     model_file: submodules/wikiclass/models/frwiki.wp10.rf.model
   hewiki_revert:
-    model_file: submodules/editquality/models/hewiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/hewiki.reverted-user.linear_svc.model
   idwiki_revert:
-    model_file: submodules/editquality/models/idwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/idwiki.reverted-user.linear_svc.model
   itwiki_revert:
-    model_file: submodules/editquality/models/itwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/itwiki.reverted-user.linear_svc.model
   nlwiki_revert:
-    model_file: submodules/editquality/models/nlwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/nlwiki.reverted-user.linear_svc.model
   ptwiki_damaging:
-    model_file: submodules/editquality/models/ptwiki.damaging.linear_svc.model
+    model_file: submodules/editquality/models/ptwiki.damaging-user.linear_svc.model
   ptwiki_goodfaith:
-    model_file: submodules/editquality/models/ptwiki.goodfaith.linear_svc.model
+    model_file: submodules/editquality/models/ptwiki.goodfaith-user.linear_svc.model
   ptwiki_revert:
-    model_file: submodules/editquality/models/ptwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/ptwiki.reverted-user.linear_svc.model
   testwiki_revert:
     class: ores.scorer_models.RevIdScorer
     version: 0.0.1
   trwiki_damaging:
-    model_file: submodules/editquality/models/trwiki.damaging.linear_svc.model
+    model_file: submodules/editquality/models/trwiki.damaging-user.linear_svc.model
   trwiki_goodfaith:
-    model_file: submodules/editquality/models/trwiki.goodfaith.linear_svc.model
+    model_file: submodules/editquality/models/trwiki.goodfaith-user.linear_svc.model
   trwiki_revert:
-    model_file: submodules/editquality/models/trwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/trwiki.reverted-user.linear_svc.model
+  ukwiki_revert:
+    model_file: submodules/editquality/models/ukwiki.reverted-user.linear_svc.model
   viwiki_revert:
-    model_file: submodules/editquality/models/viwiki.reverted.linear_svc.model
+    model_file: submodules/editquality/models/viwiki.reverted-user.linear_svc.model
   wikidata_revert:
     model_file: submodules/wb-vandalism/models/wikidata.reverted.rf.model
