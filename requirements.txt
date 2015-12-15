@@ -1,5 +1,5 @@
 editquality >= 0.2.1
-ores >= 0.5.6
+ores >= 0.5.7
 redis
 statsd
 wb-vandalism >= 0.1.6
