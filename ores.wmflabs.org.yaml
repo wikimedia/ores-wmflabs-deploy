@@ -220,7 +220,7 @@ scorer_models:
     model_file: submodules/editquality/models/ptwiki.reverted-user.linear_svc.model
   testwiki_revert:
     class: ores.scorer_models.RevIdScorer
-    version: 0.0.1
+    version: 0.0.2
   trwiki_damaging:
     model_file: submodules/editquality/models/trwiki.damaging-user.linear_svc.model
   trwiki_goodfaith:
