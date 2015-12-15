@@ -117,6 +117,7 @@ scoring_contexts:
     extractor: testwiki_offline
     scorer_models:
       reverted: testwiki_revert
+      damaging: testwiki_revert
   trwiki:
     extractor: trwiki_api
     scorer_models:

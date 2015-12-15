@@ -1,4 +1,4 @@
-editquality >= 0.2.0
+editquality >= 0.2.1
 ores >= 0.5.6
 redis
 statsd
