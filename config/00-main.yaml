@@ -11,7 +11,8 @@ ores:
 score_caches:
   ores_redis:
     class: ores.score_caches.Redis
-    host: ores-redis
+    host: ores-redis-01
+    port: 6380
     prefix: "ores"
     socket_timeout: 15
 
@@ -48,9 +49,9 @@ score_processors:
       - wikidatawiki
   ores_celery:
     class: ores.score_processors.Celery
-    BROKER_URL: redis://ores-redis
+    BROKER_URL: redis://ores-redis-01:6379
     BROKER_TRANSPORT_OPTIONS: {'socket_timeout': 15} # seconds
-    CELERY_RESULT_BACKEND: redis://ores-redis
+    CELERY_RESULT_BACKEND: redis://ores-redis-01:6379
     CELERY_ACCEPT_CONTENT: ['pickle']
     CELERY_TASK_SERIALIZER: 'pickle'
     CELERY_RESULT_SERIALIZER: 'pickle'

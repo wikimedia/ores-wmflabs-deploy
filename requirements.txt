@@ -2,5 +2,6 @@ editquality >= 0.2.1
 ores >= 0.5.7
 redis
 statsd
+yamlconf >= 0.1.0
 wb-vandalism >= 0.1.6
 wikiclass >= 0.2.1

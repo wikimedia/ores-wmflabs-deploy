@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import glob
 import logging
 import logging.config
 
@@ -6,8 +7,7 @@ import yamlconf
 
 from ores.wsgi import server
 
-with open("ores.wmflabs.org.yaml") as f:
-    config = yamlconf.load(f)
+config = yamlconf.load(*(open(p) for p in glob.glob("config/*.yaml")))
 
 with open("logging_config.yaml") as f:
     logging_config = yamlconf.load(f)
