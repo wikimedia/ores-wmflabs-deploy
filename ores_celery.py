@@ -7,7 +7,7 @@ import yamlconf
 
 from ores.score_processors import Celery
 
-config = yamlconf.load(*(open(p) for p in glob.glob("config/*.yaml")))
+config = yamlconf.load(*(open(p) for p in sorted(glob.glob("config/*.yaml"))))
 
 with open("logging_config.yaml") as f:
     logging_config = yamlconf.load(f)
