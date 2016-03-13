@@ -81,7 +81,6 @@ def initialize_worker_server():
 
 @roles('flower')
 def setup_flower():
-    sr(venv_dir + '/bin/pip', 'install', 'flower')
     sudo('service flower-ores restart')
 
 
