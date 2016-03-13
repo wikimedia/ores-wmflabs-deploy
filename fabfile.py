@@ -81,7 +81,6 @@ def initialize_worker_server():
 
 @roles('flower')
 def setup_flower():
-    sr(venv_dir + '/bin/pip', 'install', 'flower')
     sudo('service flower-ores restart')
 
 
@@ -137,9 +136,11 @@ def deploy_celery():
 @roles('web', 'worker')
 def update_virtualenv(branch='deploy'):
     update_git(branch)
+    # Don't you never, ever remove --no-deps, otherwise hell breaks loose
     with cd(venv_dir):
         sr(venv_dir + '/bin/pip', 'install',
-           '-r', config_dir + '/requirements.txt')
+           '--use-wheel', '--no-deps',
+           config_dir + 'submodules/wheels/*.whl')
 
 
 @roles('staging')

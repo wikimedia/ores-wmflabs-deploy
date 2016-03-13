@@ -13,3 +13,6 @@
 [submodule "submodules/revscoring"]
 	path = submodules/revscoring
 	url = https://github.com/wiki-ai/revscoring
+[submodule "submodules/wheels"]
+	path = submodules/wheels
+	url = https://gerrit.wikimedia.org/r/research/ores/wheels.git

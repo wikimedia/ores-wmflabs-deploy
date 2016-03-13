@@ -1,3 +1,4 @@
+Babel==2.2.0
 Flask==0.10.1
 Flask-Jsonpify==1.5.0
 Jinja2==2.8
@@ -11,6 +12,7 @@ celery==3.1.22
 deltas==0.3.9
 docopt==0.6.2
 editquality==0.3.0
+flower==0.8.4
 itsdangerous==0.24
 jsonable==0.3.1
 jsonschema==2.5.1
@@ -40,6 +42,7 @@ socketIO-client==0.5.6
 statsd==3.2.1
 stopit==1.1.1
 tabulate==0.7.5
+tornado==4.2
 wb-vandalism==0.1.8
 websocket-client==0.35.0
 wikiclass==0.2.3
