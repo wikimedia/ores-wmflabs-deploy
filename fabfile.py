@@ -13,9 +13,8 @@ can initialize it with:
 
 This:
     1. Sets up the virtualenv appropriately
-    2. Downloads NLTK corpuses
-    3. Sets up latest models
-    4. Does a deploy / restarts uwsgi
+    2. Sets up latest models
+    3. Does a deploy / restarts uwsgi
 
 For first time use, just doing this step should provide a working server!
 
@@ -92,15 +91,11 @@ def initialize_server(branch='deploy'):
 
     - Creates the virtualenv
     - Installs virtualenv
-    - Installs nltk corpuses
     """
     update_git(branch)
     sr('mkdir', '-p', venv_dir)
     sr('virtualenv', '--python', 'python3', '--system-site-packages', venv_dir)
     update_virtualenv()
-    sr(venv_dir + '/bin/python', '-m', 'nltk.downloader',
-       '-d', data_dir + '/nltk',
-       'wordnet', 'omw', 'stopwords')
 
 
 @roles('web', 'worker')
