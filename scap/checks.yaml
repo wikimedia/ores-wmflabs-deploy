@@ -2,5 +2,5 @@ checks:
   setup_virtualenv:
     type: command
     stage: promote
-    command: mkdir -p /srv/ores/venv && virtualenv --python python3 --system-site-packages /srv/ores/venv && /srv/ores/venv/bin/pip install --use-wheel --no-deps /srv/ores/config/submodules/wheels/*.whl
+    command: mkdir -p /srv/ores/venv && virtualenv --python python3 --system-site-packages /srv/ores/venv && /srv/ores/venv/bin/pip install --use-wheel --no-deps /srv/ores/config/submodules/wheels/*.whl && sudo service celery-ores-worker restart
 
