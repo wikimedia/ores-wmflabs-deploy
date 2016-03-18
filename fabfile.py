@@ -43,7 +43,7 @@ from fabric.api import cd, env, roles, shell_env, sudo
 
 env.roledefs = {
     'web': ['ores-web-01.eqiad.wmflabs', 'ores-web-02.eqiad.wmflabs'],
-    'staging': ['ores-staging-01.eqiad.wmflabs'],
+    'staging': ['ores-staging-02.eqiad.wmflabs'],
     'worker': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs',
                'ores-worker-03.eqiad.wmflabs', 'ores-worker-04.eqiad.wmflabs'],
     'flower': ['ores-web-01.eqiad.wmflabs'],
@@ -135,7 +135,7 @@ def update_virtualenv(branch='deploy'):
     with cd(venv_dir):
         sr(venv_dir + '/bin/pip', 'install',
            '--use-wheel', '--no-deps',
-           config_dir + 'submodules/wheels/*.whl')
+           config_dir + '/submodules/wheels/*.whl')
 
 
 @roles('staging')
