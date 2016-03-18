@@ -1,49 +1,8 @@
-Babel==2.2.0
-Flask==0.10.1
-Flask-Jsonpify==1.5.0
-Jinja2==2.8
-MarkupSafe==0.23
-PyYAML==3.11
-Werkzeug==0.11.4
-amqp==1.4.9
-anyjson==0.3.3
-billiard==3.3.0.23
-celery==3.1.22
-deltas==0.3.9
-docopt==0.6.2
-editquality==0.3.0
-flower==0.8.4
-itsdangerous==0.24
-jsonable==0.3.1
-jsonschema==2.5.1
-kombu==3.0.34
-mwapi==0.3.1
-mwcli==0.0.2
-mwparserfromhell==0.4.3
-mwreverts==0.0.6
-mwtypes==0.2.0
-mwxml==0.2.1
-nltk==3.0.5
-nose==1.3.7
-numpy==1.10.4
-ores==0.5.8
-para==0.0.5
-pyenchant==1.6.6
-python-Levenshtein==0.12.0
-pytz==2015.7
-pywikibase==0.0.4
-redis==2.10.5
-requests==2.9.1
-revscoring==0.7.11
-scikit-learn==0.15.2
-scipy==0.17.0
-six==1.10.0
-socketIO-client==0.5.6
-statsd==3.2.1
-stopit==1.1.1
-tabulate==0.7.5
-tornado==4.2
-wb-vandalism==0.1.8
-websocket-client==0.35.0
-wikiclass==0.2.3
-yamlconf==0.1.0
+celery >= 3.1.22, < 3.1.999
+editquality >= 0.4.0, < 0.4.999
+ores >= 0.6.1, < 0.6.999
+redis >= 2.10.5, < 2.10.999
+revscoring >= 1.1.3, < 1.1.999
+statsd >= 3.2.1, < 3.2.999
+wikiclass >= 0.3.0, < 0.3.999
+yamlconf >= 0.1.0, < 0.1.999
