@@ -1,6 +1,3 @@
-[submodule "ores"]
-	path = submodules/ores
-	url = https://github.com/wiki-ai/ores.git
 [submodule "wb-vandalism"]
 	path = submodules/wb-vandalism
 	url = https://github.com/wiki-ai/wb-vandalism
@@ -10,9 +7,6 @@
 [submodule "submodules/editquality"]
 	path = submodules/editquality
 	url = https://github.com/wiki-ai/editquality
-[submodule "submodules/revscoring"]
-	path = submodules/revscoring
-	url = https://github.com/wiki-ai/revscoring
 [submodule "submodules/wheels"]
 	path = submodules/wheels
 	url = https://gerrit.wikimedia.org/r/research/ores/wheels.git
