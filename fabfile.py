@@ -42,12 +42,13 @@ This updates all the web workers of ores to the new code and restarts them.
 from fabric.api import cd, env, roles, shell_env, sudo
 
 env.roledefs = {
-    'web': ['ores-web-01.eqiad.wmflabs', 'ores-web-02.eqiad.wmflabs',
-            'ores-web-03.eqiad.wmflabs'],
+    'web': ['ores-web-03.eqiad.wmflabs', 'ores-web-04.eqiad.wmflabs',
+            'ores-web-05.eqiad.wmflabs'],
     'staging': ['ores-staging-02.eqiad.wmflabs'],
-    'worker': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs',
-               'ores-worker-03.eqiad.wmflabs', 'ores-worker-04.eqiad.wmflabs'],
-    'flower': ['ores-web-01.eqiad.wmflabs'],
+    'worker': ['ores-worker-05.eqiad.wmflabs', 'ores-worker-07.eqiad.wmflabs',
+               'ores-worker-06.eqiad.wmflabs', 'ores-worker-08.eqiad.wmflabs',
+               'ores-worker-09.eqiad.wmflabs', 'ores-worker-10.eqiad.wmflabs'],
+    'flower': ['ores-web-03.eqiad.wmflabs'],
 }
 env.use_ssh_config = True
 env.shell = '/bin/bash -c'
@@ -120,34 +121,38 @@ def restart_celery():
 @roles('web')
 def deploy_web():
     update_git()
+    update_virtualenv()
     restart_uwsgi()
 
 
 @roles('worker')
 def deploy_celery():
     update_git()
+    update_virtualenv()
     restart_celery()
 
 
 @roles('web', 'worker')
-def update_virtualenv(branch='deploy'):
-    update_git(branch)
+def update_virtualenv():
     # Don't you never, ever remove --no-deps, otherwise hell breaks loose
+    clean_virtualenv()
     with cd(venv_dir):
         sr(venv_dir + '/bin/pip', 'install',
            '--use-wheel', '--no-deps',
            config_dir + '/submodules/wheels/*.whl')
 
 
-@roles('staging')
-def update_and_stage():
-    update_virtualenv('master')
-    stage()
+@roles('web', 'worker')
+def clean_virtualenv():
+    with cd(venv_dir):
+        sr(venv_dir + '/bin/pip', 'freeze',
+           '|', 'xargs', venv_dir + '/bin/pip', 'uninstall', '-y')
 
 
 @roles('staging')
 def stage():
     update_git('master')
+    update_virtualenv()
     restart_uwsgi()
     restart_celery()
 
