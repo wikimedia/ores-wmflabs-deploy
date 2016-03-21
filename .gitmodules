@@ -10,3 +10,6 @@
 [submodule "submodules/wheels"]
 	path = submodules/wheels
 	url = https://gerrit.wikimedia.org/r/research/ores/wheels.git
+[submodule "submodules/ores"]
+	path = submodules/ores
+	url = https://github.com/wiki-ai/ores
