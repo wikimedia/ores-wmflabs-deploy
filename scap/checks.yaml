@@ -1,0 +1,6 @@
+checks:
+  setup_virtualenv:
+    type: command
+    stage: promote
+    command: bash /srv/ores/ores-wikimedia-config/scap/cmd.sh
+
