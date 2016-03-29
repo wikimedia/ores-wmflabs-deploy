@@ -22,4 +22,5 @@ score_processor = Celery.from_config(config, config['ores']['score_processor'])
 application = score_processor.application
 
 if __name__ == '__main__':
+    logging.getLogger('ores').setLevel(logging.DEBUG)
     application.worker_main(argv=["celery_worker", "--loglevel=INFO"])
