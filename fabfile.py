@@ -79,6 +79,10 @@ def initialize_worker_server():
     initialize_server('deploy')
     restart_celery()
 
+def git_clone(branch='deploy'):
+    sr('git', 'clone', 'https://github.com/wiki-ai/ores-wikimedia-config.git',
+       config_dir)
+    sr('git', 'checkout', branch)
 
 @roles('flower')
 def setup_flower():
@@ -94,7 +98,7 @@ def initialize_server(branch='deploy'):
     - Creates the virtualenv
     - Installs virtualenv
     """
-    update_git(branch)
+    git_clone(branch)
     sr('mkdir', '-p', venv_dir)
     sr('virtualenv', '--python', 'python3', '--system-site-packages', venv_dir)
     update_virtualenv()
