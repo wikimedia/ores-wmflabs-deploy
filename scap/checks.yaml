@@ -2,7 +2,7 @@ checks:
   setup_virtualenv:
     type: command
     stage: promote
-    command: bash /srv/ores/ores-wikimedia-config/scap/cmd.sh
+    command: bash /srv/ores/deploy/scap/cmd.sh
   restart_flower:
     type: command
     stage: promote
