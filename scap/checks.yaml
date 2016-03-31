@@ -4,9 +4,13 @@ checks:
     stage: promote
     timeout: 300
     command: bash /srv/ores/deploy/scap/cmd.sh
-#  restart_worker:
-#    type: command
-#    stage: promote
-#    group: worker
-#    command: sudo service celery-ores-worker restart
-
+  restart_worker:
+    type: command
+    stage: promote
+    group: worker
+    command: sudo service celery-ores-worker restart
+  restart_web:
+    type: command
+    stage: promote
+    group: default
+    command: sudo service uwsgi-ores-web restart
