@@ -2,15 +2,16 @@ checks:
   setup_virtualenv:
     type: command
     stage: promote
+    timeout: 300
     command: bash /srv/ores/deploy/scap/cmd.sh
-  restart_flower:
-    type: command
-    stage: promote
-    group: flower
-    command: sudo service flower-ores restart
-  restart_worker:
-    type: command
-    stage: promote
-    group: worker
-    command: sudo service celery-ores-worker restart
+#  restart_flower:
+#    type: command
+#    stage: promote
+#    group: flower
+#    command: sudo service flower-ores restart
+#  restart_worker:
+#    type: command
+#    stage: promote
+#    group: worker
+#    command: sudo service celery-ores-worker restart
 
