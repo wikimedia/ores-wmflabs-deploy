@@ -5,13 +5,13 @@ ores:
     application_root: ""
     url_prefix: ""
   data_paths:
-    nltk: /srv/ores/deploy/submodules/wheels/nltk/
+    nltk: /srv/ores/config/submodules/wheels/nltk/
 
 # Score cache options
 score_caches:
   ores_redis:
     class: ores.score_caches.Redis
-    host: deployment-ores-redis
+    host: ores-redis-01
     port: 6380
     prefix: "ores"
     socket_timeout: 15
@@ -51,9 +51,9 @@ score_processors:
       - wikidatawiki
   ores_celery:
     class: ores.score_processors.Celery
-    BROKER_URL: redis://deployment-ores-redis:6379
+    BROKER_URL: redis://ores-redis-01:6379
     BROKER_TRANSPORT_OPTIONS: {'socket_timeout': 15} # seconds
-    CELERY_RESULT_BACKEND: redis://deployment-ores-redis:6379
+    CELERY_RESULT_BACKEND: redis://ores-redis-01:6379
     CELERY_ACCEPT_CONTENT: ['pickle']
     CELERY_TASK_SERIALIZER: 'pickle'
     CELERY_RESULT_SERIALIZER: 'pickle'
