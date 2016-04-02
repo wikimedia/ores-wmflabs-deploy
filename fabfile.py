@@ -80,6 +80,8 @@ def initialize_worker_server():
     restart_celery()
 
 def git_clone(branch='deploy'):
+    sr('mkdir', '-p', config_dir)
+    sr('chmod' , '-R', '775', config_dir)
     sr('git', 'clone', 'https://github.com/wiki-ai/ores-wikimedia-config.git',
        config_dir)
     sr('git', 'checkout', branch)
