@@ -198,57 +198,57 @@ scorer_models:
   arwiki_revert:
     model_file: submodules/editquality/models/arwiki.reverted.rf.model
   dewiki_revert:
-    model_file: submodules/editquality/models/dewiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/dewiki.reverted.gradient_boosting.model
   enwiki_wp10:
     model_file: submodules/wikiclass/models/enwiki.nettrom_wp10.rf.model
   enwiki_revert:
-    model_file: submodules/editquality/models/enwiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/enwiki.reverted.gradient_boosting.model
   enwiki_damaging:
-    model_file: submodules/editquality/models/enwiki.damaging.linear_svc_balanced.model
+    model_file: submodules/editquality/models/enwiki.damaging.gradient_boosting.model
   enwiki_goodfaith:
-    model_file: submodules/editquality/models/enwiki.goodfaith.linear_svc_balanced.model
+    model_file: submodules/editquality/models/enwiki.goodfaith.gradient_boosting.model
   eswiki_revert:
-    model_file: submodules/editquality/models/eswiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/eswiki.reverted.gradient_boosting.model
   etwiki_revert:
-    model_file: submodules/editquality/models/etwiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/etwiki.reverted.gradient_boosting.model
   fawiki_damaging:
-    model_file: submodules/editquality/models/fawiki.damaging.linear_svc_balanced.model
+    model_file: submodules/editquality/models/fawiki.damaging.gradient_boosting.model
   fawiki_goodfaith:
-    model_file: submodules/editquality/models/fawiki.goodfaith.linear_svc_balanced.model
+    model_file: submodules/editquality/models/fawiki.goodfaith.gradient_boosting.model
   fawiki_revert:
-    model_file: submodules/editquality/models/fawiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/fawiki.reverted.gradient_boosting.model
   frwiki_revert:
-    model_file: submodules/editquality/models/frwiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/frwiki.reverted.gradient_boosting.model
   frwiki_wp10:
     model_file: submodules/wikiclass/models/frwiki.wp10.rf.model
   hewiki_revert:
-    model_file: submodules/editquality/models/hewiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/hewiki.reverted.gradient_boosting.model
   idwiki_revert:
-    model_file: submodules/editquality/models/idwiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/idwiki.reverted.gradient_boosting.model
   itwiki_revert:
-    model_file: submodules/editquality/models/itwiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/itwiki.reverted.gradient_boosting.model
   nlwiki_revert:
     model_file: submodules/editquality/models/nlwiki.reverted.gradient_boosting.model
   plwiki_revert:
     model_file: submodules/editquality/models/plwiki.reverted.rf.model
   ptwiki_damaging:
-    model_file: submodules/editquality/models/ptwiki.damaging.linear_svc_balanced.model
+    model_file: submodules/editquality/models/ptwiki.damaging.gradient_boosting.model
   ptwiki_goodfaith:
-    model_file: submodules/editquality/models/ptwiki.goodfaith.linear_svc_balanced.model
+    model_file: submodules/editquality/models/ptwiki.goodfaith.gradient_boosting.model
   ptwiki_revert:
-    model_file: submodules/editquality/models/ptwiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/ptwiki.reverted.gradient_boosting.model
   testwiki_revert:
     class: ores.scorer_models.RevIdScorer
     version: 0.0.2
   trwiki_damaging:
-    model_file: submodules/editquality/models/trwiki.damaging.linear_svc_balanced.model
+    model_file: submodules/editquality/models/trwiki.damaging.gradient_boosting.model
   trwiki_goodfaith:
-    model_file: submodules/editquality/models/trwiki.goodfaith.linear_svc_balanced.model
+    model_file: submodules/editquality/models/trwiki.goodfaith.gradient_boosting.model
   trwiki_revert:
-    model_file: submodules/editquality/models/trwiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/trwiki.reverted.gradient_boosting.model
   ukwiki_revert:
-    model_file: submodules/editquality/models/ukwiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/ukwiki.reverted.gradient_boosting.model
   viwiki_revert:
-    model_file: submodules/editquality/models/viwiki.reverted.linear_svc_balanced.model
+    model_file: submodules/editquality/models/viwiki.reverted.gradient_boosting.model
   wikidata_revert:
     model_file: submodules/editquality/models/wikidatawiki.reverted.rf.model
