@@ -82,7 +82,8 @@ def initialize_worker_server():
 def git_clone(branch='deploy'):
     sr('mkdir', '-p', config_dir)
     sr('chmod' , '-R', '775', config_dir)
-    sr('git', 'clone', 'https://github.com/wiki-ai/ores-wikimedia-config.git',
+    sr('git', 'clone', '--git-dir', '/srv/ores/',
+      'https://github.com/wiki-ai/ores-wikimedia-config.git',
        config_dir)
     sr('git', 'checkout', branch)
 
