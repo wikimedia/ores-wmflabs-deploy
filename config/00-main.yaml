@@ -68,10 +68,16 @@ scoring_contexts:
     extractor: arwiki_api
     scorer_models:
       reverted: arwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   dewiki:
     extractor: dewiki_api
     scorer_models:
       reverted: dewiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   enwiki:
     extractor: enwiki_api
     scorer_models:
@@ -79,74 +85,141 @@ scoring_contexts:
       wp10: enwiki_wp10
       damaging: enwiki_damaging
       goodfaith: enwiki_goodfaith
+    precache:
+      damaging:
+        "on": ["edit"]
+      reverted:
+        "on": ["edit"]
+      goodfaith:
+        "on": ["edit"]
   eswiki:
     extractor: eswiki_api
     scorer_models:
       reverted: eswiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   etwiki:
     extractor: etwiki_api
     scorer_models:
       reverted: etwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   fawiki:
     extractor: fawiki_api
     scorer_models:
       reverted: fawiki_revert
       damaging: fawiki_damaging
       goodfaith: fawiki_goodfaith
+    precache:
+      damaging:
+        "on": ["edit"]
+      reverted:
+        "on": ["edit"]
+      goodfaith:
+        "on": ["edit"]
   frwiki:
     extractor: frwiki_api
     scorer_models:
       reverted: frwiki_revert
       wp10: frwiki_wp10
+    precache:
+      reverted:
+        "on": ["edit"]
   hewiki:
     extractor: hewiki_api
     scorer_models:
       reverted: hewiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   idwiki:
     extractor: idwiki_api
     scorer_models:
       reverted: idwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   itwiki:
     extractor: itwiki_api
     scorer_models:
       reverted: itwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   nlwiki:
     extractor: nlwiki_api
     scorer_models:
       reverted: nlwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   plwiki:
     extractor: plwiki_api
     scorer_models:
       reverted: plwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   ptwiki:
     extractor: ptwiki_api
     scorer_models:
       reverted: ptwiki_revert
       damaging: ptwiki_damaging
       goodfaith: ptwiki_goodfaith
+    precache:
+      damaging:
+        "on": ["edit"]
+      reverted:
+        "on": ["edit"]
+      goodfaith:
+        "on": ["edit"]
   testwiki:
     extractor: testwiki_offline
     scorer_models:
       reverted: testwiki_revert
       damaging: testwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   trwiki:
     extractor: trwiki_api
     scorer_models:
       reverted: trwiki_revert
       damaging: trwiki_damaging
       goodfaith: trwiki_goodfaith
+    precache:
+      damaging:
+        "on": ["edit"]
+      reverted:
+        "on": ["edit"]
+      goodfaith:
+        "on": ["edit"]
+    precache:
+      reverted:
+        "on": ["edit"]
   viwiki:
     extractor: viwiki_api
     scorer_models:
       reverted: viwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   ukwiki:
     extractor: ukwiki_api
     scorer_models:
       reverted: ukwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   wikidatawiki:
     extractor: wikidata_api
     scorer_models:
       reverted: wikidata_revert
+    precache:
+      reverted:
+        "on": ["edit"]
 
 # Feature extractors
 extractors:
