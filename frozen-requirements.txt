@@ -15,6 +15,7 @@ itsdangerous==0.24
 jsonable==0.3.1
 jsonschema==2.5.1
 kombu==3.0.34
+more-itertools == 2.2
 mwapi==0.3.1
 mwcli==0.0.2
 mwparserfromhell==0.4.3
