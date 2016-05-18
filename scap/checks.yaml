@@ -3,7 +3,7 @@ checks:
     type: command
     stage: promote
     timeout: 300
-    command: bash /srv/ores/deploy/scap/cmd.sh
+    command: bash /srv/deployment/ores/deploy/scap/cmd.sh
   restart_worker:
     type: command
     stage: promote
