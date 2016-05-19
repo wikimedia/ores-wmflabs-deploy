@@ -13,4 +13,4 @@ checks:
     type: command
     stage: promote
     group: default
-    command: sudo service uwsgi-ores-web restart
+    command: sudo service uwsgi-ores restart
