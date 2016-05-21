@@ -117,7 +117,7 @@ def update_git(branch='deploy'):
 
 @roles('web')
 def restart_uwsgi():
-    sudo('service uwsgi-ores-web restart')
+    sudo('service uwsgi-ores restart')
 
 
 @roles('worker')
