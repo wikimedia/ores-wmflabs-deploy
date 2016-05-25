@@ -1,15 +1,15 @@
 checks:
-  setup_virtualenv:
+  01_setup_virtualenv:
     type: command
     stage: promote
     timeout: 300
     command: bash /srv/deployment/ores/deploy/scap/cmd.sh
-  restart_worker:
+  02_restart_worker:
     type: command
     stage: promote
     group: worker
     command: sudo service celery-ores-worker restart
-  restart_web:
+  03_restart_web:
     type: command
     stage: promote
     group: default
