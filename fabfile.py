@@ -48,7 +48,6 @@ env.roledefs = {
     'worker': ['ores-worker-05.eqiad.wmflabs', 'ores-worker-07.eqiad.wmflabs',
                'ores-worker-06.eqiad.wmflabs', 'ores-worker-08.eqiad.wmflabs',
                'ores-worker-09.eqiad.wmflabs', 'ores-worker-10.eqiad.wmflabs'],
-    'flower': ['ores-web-03.eqiad.wmflabs'],
 }
 env.use_ssh_config = True
 env.shell = '/bin/bash -c'
@@ -65,7 +64,6 @@ def sr(*cmd):
 
 def initialize_staging_server():
     initialize_server('master')
-    setup_flower()
     restart_uwsgi()
     restart_celery()
 
@@ -79,17 +77,14 @@ def initialize_worker_server():
     initialize_server('deploy')
     restart_celery()
 
+
 def git_clone(branch='deploy'):
     sr('mkdir', '-p', config_dir)
-    sr('chmod' , '-R', '775', config_dir)
+    sr('chmod', '-R', '775', config_dir)
     # They need to be one command
     sr('cd', '/', '&&', 'git', 'clone', '--recursive',
-      'https://github.com/wiki-ai/ores-wikimedia-config.git', config_dir)
+       'https://github.com/wiki-ai/ores-wikimedia-config.git', config_dir)
     sr('cd', config_dir, '&&', 'git', 'checkout', branch)
-
-@roles('flower')
-def setup_flower():
-    sudo('service flower-ores restart')
 
 
 def initialize_server(branch='deploy'):
