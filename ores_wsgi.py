@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import logging
+
 from ores.applications import wsgi
 
 application = wsgi.build()
