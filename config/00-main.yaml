@@ -204,6 +204,7 @@ scoring_contexts:
       reverted: ruwiki_revert
       damaging: ruwiki_damaging
       goodfaith: ruwiki_goodfaith
+      wp10: ruwiki_wp10
     precache:
       damaging:
         "on": ["edit"]
@@ -357,6 +358,8 @@ scorer_models:
     model_file: submodules/editquality/models/ruwiki.goodfaith.gradient_boosting.model
   ruwiki_revert:
     model_file: submodules/editquality/models/ruwiki.reverted.gradient_boosting.model
+  ruwiki_wp10:
+    model_file: submodules/wikiclass/models/ruwiki.wp10.rf.model
   testwiki_revert:
     class: ores.scorer_models.RevIdScorer
     version: 0.0.2
