@@ -43,9 +43,11 @@ score_processors:
       - idwiki
       - itwiki
       - nlwiki
+      - nowiki
       - plwiki
       - ptwiki
       - ruwiki
+      - svwiki
       - testwiki
       - trwiki
       - ukwiki
@@ -170,6 +172,13 @@ scoring_contexts:
         "on": ["edit"]
       goodfaith:
         "on": ["edit"]
+  nowiki:
+    extractor: nowiki_api
+    scorer_models:
+      reverted: nowiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   plwiki:
     extractor: plwiki_api
     scorer_models:
@@ -211,6 +220,13 @@ scoring_contexts:
       reverted:
         "on": ["edit"]
       goodfaith:
+        "on": ["edit"]
+  svwiki:
+    extractor: svwiki_api
+    scorer_models:
+      reverted: svwiki_revert
+    precache:
+      reverted:
         "on": ["edit"]
   trwiki:
     extractor: trwiki_api
@@ -281,6 +297,8 @@ extractors:
     host: https://id.wikipedia.org
   itwiki_api:
     host: https://it.wikipedia.org
+  nowiki_api:
+    host: https://no.wikipedia.org
   nlwiki_api:
     host: https://nl.wikipedia.org
   plwiki_api:
@@ -289,6 +307,8 @@ extractors:
     host: https://pt.wikipedia.org
   ruwiki_api:
     host: https://ru.wikipedia.org
+  svwiki_api:
+    host: https://sv.wikipedia.org
   testwiki_offline:
     class: revscoring.extractors.OfflineExtractor
   trwiki_api:
@@ -344,6 +364,8 @@ scorer_models:
     model_file: submodules/editquality/models/nlwiki.damaging.gradient_boosting.model
   nlwiki_goodfaith:
     model_file: submodules/editquality/models/nlwiki.goodfaith.gradient_boosting.model
+  nowiki_revert:
+    model_file: submodules/editquality/models/nowiki.reverted.rf.model
   plwiki_revert:
     model_file: submodules/editquality/models/plwiki.reverted.rf.model
   ptwiki_damaging:
@@ -360,6 +382,8 @@ scorer_models:
     model_file: submodules/editquality/models/ruwiki.reverted.gradient_boosting.model
   ruwiki_wp10:
     model_file: submodules/wikiclass/models/ruwiki.wp10.rf.model
+  svwiki_revert:
+    model_file: submodules/editquality/models/svwiki.reverted.rf.model
   testwiki_revert:
     class: ores.scorer_models.RevIdScorer
     version: 0.0.2
