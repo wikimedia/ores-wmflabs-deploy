@@ -1,21 +1,21 @@
-Flask==0.10.1
-Flask-Jsonpify==1.5.0
-Jinja2==2.8
-MarkupSafe==0.23
-PyYAML==3.11
-Werkzeug==0.11.4
 amqp==1.4.9
 anyjson==0.3.3
 billiard==3.3.0.23
 celery==3.1.23
-deltas==0.3.9
+deltas==0.3.10
 docopt==0.6.2
 editquality==0.4.1
+Flask==0.10.1
+Flask-Jsonpify==1.5.0
+flask-swaggerui==0.0.1
+flask-wikimediaui==0.0.1
 itsdangerous==0.24
+Jinja2==2.8
 jsonable==0.3.1
 jsonschema==2.5.1
 kombu==3.0.34
-more-itertools == 2.2
+MarkupSafe==0.23
+more-itertools==2.2
 mwapi==0.3.1
 mwcli==0.0.2
 mwparserfromhell==0.4.3
@@ -29,6 +29,7 @@ para==0.0.5
 pyenchant==1.6.6
 pytz==2012rc0
 pywikibase==0.0.4
+PyYAML==3.11
 redis==2.10.5
 requests==2.9.1
 revscoring==1.2.6
@@ -40,5 +41,6 @@ statsd==3.2.1
 stopit==1.1.1
 tabulate==0.7.5
 websocket-client==0.35.0
+Werkzeug==0.11.4
 wikiclass==0.3.1
 yamlconf==0.1.0
