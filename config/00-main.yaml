@@ -32,8 +32,10 @@ score_processors:
     metrics_collector: wmflabs_statsd
     scoring_contexts:
       - arwiki
+      - cswiki
       - dewiki
       - enwiki
+      - enwiktionary
       - eswiki
       - etwiki
       - fawiki
@@ -75,6 +77,13 @@ scoring_contexts:
     precache:
       reverted:
         "on": ["edit"]
+  cswiki:
+    extractor: cswiki_api
+    scorer_models:
+      reverted: cswiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   dewiki:
     extractor: dewiki_api
     scorer_models:
@@ -95,6 +104,13 @@ scoring_contexts:
       reverted:
         "on": ["edit"]
       goodfaith:
+        "on": ["edit"]
+  enwiktionary:
+    extractor: enwiktionary_api
+    scorer_models:
+      reverted: enwiktionary_revert
+    precache:
+      reverted:
         "on": ["edit"]
   eswiki:
     extractor: eswiki_api
@@ -277,10 +293,14 @@ extractors:
     timeout: 5
   arwiki_api:
     host: https://ar.wikipedia.org
+  cswiki_api:
+    host: https://cs.wikipedia.org
   dewiki_api:
     host: https://de.wikipedia.org
   enwiki_api:
     host: https://en.wikipedia.org
+  enwiktionary_api:
+    host: https://en.wiktionary.org
   eswiki_api:
     host: https://es.wikipedia.org
   etwiki_api:
@@ -326,6 +346,8 @@ scorer_models:
     class: revscoring.scorer_models.MLScorerModel
   arwiki_revert:
     model_file: submodules/editquality/models/arwiki.reverted.rf.model
+  cswiki_revert:
+    model_file: submodules/editquality/models/cswiki.reverted.rf.model
   dewiki_revert:
     model_file: submodules/editquality/models/dewiki.reverted.gradient_boosting.model
   enwiki_wp10:
@@ -336,6 +358,8 @@ scorer_models:
     model_file: submodules/editquality/models/enwiki.damaging.gradient_boosting.model
   enwiki_goodfaith:
     model_file: submodules/editquality/models/enwiki.goodfaith.gradient_boosting.model
+  enwiktionary_revert:
+    model_file: submodules/editquality/models/enwiktionary.reverted.rf.model
   eswiki_revert:
     model_file: submodules/editquality/models/eswiki.reverted.gradient_boosting.model
   etwiki_revert:
