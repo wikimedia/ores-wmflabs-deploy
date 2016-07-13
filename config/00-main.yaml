@@ -345,9 +345,9 @@ scorer_models:
   defaults:
     class: revscoring.scorer_models.MLScorerModel
   arwiki_revert:
-    model_file: submodules/editquality/models/arwiki.reverted.rf.model
+    model_file: submodules/editquality/models/arwiki.reverted.gradient_boosting.model
   cswiki_revert:
-    model_file: submodules/editquality/models/cswiki.reverted.rf.model
+    model_file: submodules/editquality/models/cswiki.reverted.gradient_boosting.model
   dewiki_revert:
     model_file: submodules/editquality/models/dewiki.reverted.gradient_boosting.model
   enwiki_wp10:
@@ -389,9 +389,13 @@ scorer_models:
   nlwiki_goodfaith:
     model_file: submodules/editquality/models/nlwiki.goodfaith.gradient_boosting.model
   nowiki_revert:
-    model_file: submodules/editquality/models/nowiki.reverted.rf.model
+    model_file: submodules/editquality/models/nowiki.reverted.gradient_boosting.model
+  plwiki_damaging:
+    model_file: submodules/editquality/models/plwiki.damaging.gradient_boosting.model
+  plwiki_goodfaith:
+    model_file: submodules/editquality/models/plwiki.goodfaith.rf.model
   plwiki_revert:
-    model_file: submodules/editquality/models/plwiki.reverted.rf.model
+    model_file: submodules/editquality/models/plwiki.reverted.gradient_boosting.model
   ptwiki_damaging:
     model_file: submodules/editquality/models/ptwiki.damaging.gradient_boosting.model
   ptwiki_goodfaith:
@@ -407,7 +411,7 @@ scorer_models:
   ruwiki_wp10:
     model_file: submodules/wikiclass/models/ruwiki.wp10.rf.model
   svwiki_revert:
-    model_file: submodules/editquality/models/svwiki.reverted.rf.model
+    model_file: submodules/editquality/models/svwiki.reverted.gradient_boosting.model
   testwiki_revert:
     class: ores.scorer_models.RevIdScorer
     version: 0.0.2
@@ -426,4 +430,4 @@ scorer_models:
   wikidata_goodfaith:
     model_file: submodules/editquality/models/wikidatawiki.goodfaith.gradient_boosting.model
   wikidata_revert:
-    model_file: submodules/editquality/models/wikidatawiki.reverted.rf.model
+    model_file: submodules/editquality/models/wikidatawiki.reverted.gradient_boosting.model
