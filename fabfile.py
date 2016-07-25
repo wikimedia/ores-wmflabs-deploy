@@ -52,9 +52,10 @@ env.roledefs = {
 env.use_ssh_config = True
 env.shell = '/bin/bash -c'
 
-config_dir = '/srv/ores/config'
-venv_dir = '/srv/ores/venv'
-data_dir = '/srv/ores/data'
+base_dir = '/srv/ores'
+config_dir = base_dir + '/config'
+venv_dir = base_dir + '/venv'
+data_dir = base_dir + '/data'
 
 
 def sr(*cmd):
@@ -96,6 +97,8 @@ def initialize_server(branch='deploy'):
     - Creates the virtualenv
     - Installs virtualenv
     """
+    sudo("mkdir -p " + base_dir)
+    sudo("chown www-data:www-data " + base_dir)
     git_clone(branch)
     sr('mkdir', '-p', venv_dir)
     sr('virtualenv', '--python', 'python3', '--system-site-packages', venv_dir)
