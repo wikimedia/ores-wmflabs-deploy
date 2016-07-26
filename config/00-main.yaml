@@ -1,6 +1,6 @@
 # Top level configuration
 ores:
-  score_processor: ores_celery
+  scoring_system: celery_queue
   wsgi:
     application_root: ""
     url_prefix: ""
@@ -26,7 +26,7 @@ metrics_collectors:
     prefix: ores.{hostname}
 
 # Score processor
-score_processors:
+scoring_systems:
   defaults:
     score_cache: ores_redis
     metrics_collector: wmflabs_statsd
@@ -55,8 +55,13 @@ score_processors:
       - ukwiki
       - viwiki
       - wikidatawiki
-  ores_celery:
-    class: ores.score_processors.Celery
+  local_single_thread:
+    class: ores.scoring_systems.SingleThread
+  local_process_pool:
+    class: ores.scoring_systems.ProcessPool
+    workers: 8
+  celery_queue:
+    class: ores.scoring_systems.CeleryQueue
     BROKER_URL: redis://ores-redis-01:6379
     BROKER_TRANSPORT_OPTIONS: {'socket_timeout': 15} # seconds
     CELERY_RESULT_BACKEND: redis://ores-redis-01:6379
@@ -280,11 +285,11 @@ scoring_contexts:
       goodfaith: wikidata_goodfaith
     precache:
       damaging:
-        "on": ["edit"]
+        "on": ["nonbot_edit"]
       reverted:
-        "on": ["edit"]
+        "on": ["nonbot_edit"]
       goodfaith:
-        "on": ["edit"]
+        "on": ["nonbot_edit"]
 
 # Feature extractors
 extractors:
