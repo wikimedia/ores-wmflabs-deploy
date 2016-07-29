@@ -1,0 +1,13 @@
+# Score cache options
+score_caches:
+  ores_redis:
+    class: ores.score_caches.Redis
+    host: 127.0.0.1  # Local
+    port: 6379  # Default port
+
+scoring_systems:
+  defaults:
+    metrics_collector: local_logging  # Don't try to connect graphite
+  celery_queue:
+    BROKER_URL: redis://127.0.0.1:6379  # Local
+    CELERY_RESULT_BACKEND: redis://127.0.0.1:6379  # Local
