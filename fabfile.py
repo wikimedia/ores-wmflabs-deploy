@@ -39,7 +39,10 @@ This can be simply run by:
 
 This updates all the web workers of ores to the new code and restarts them.
 """
-from fabric.api import cd, env, roles, shell_env, sudo
+import glob
+import os
+
+from fabric.api import cd, env, put, roles, shell_env, sudo
 
 env.roledefs = {
     'web': ['ores-web-03.eqiad.wmflabs', 'ores-web-04.eqiad.wmflabs',
@@ -56,7 +59,7 @@ base_dir = '/srv/ores'
 config_dir = base_dir + '/config'
 venv_dir = base_dir + '/venv'
 data_dir = base_dir + '/data'
-
+config_config_dir = config_dir + "/config"
 
 def sr(*cmd):
     with shell_env(HOME='/srv/ores'):
@@ -126,6 +129,7 @@ def restart_celery():
 @roles('web')
 def deploy_web():
     update_git()
+    update_custom_config()
     update_virtualenv()
     restart_uwsgi()
 
@@ -133,6 +137,7 @@ def deploy_web():
 @roles('worker')
 def deploy_celery():
     update_git()
+    update_custom_config()
     update_virtualenv()
     restart_celery()
 
@@ -157,9 +162,36 @@ def clean_virtualenv():
 @roles('staging')
 def stage():
     update_git('master')
+    update_custom_config('master')
     update_virtualenv()
     restart_uwsgi()
     restart_celery()
+
+
+def update_custom_config(branch='deploy'):
+    """
+    Uploads config files to server
+    """
+    if branch == "deploy":
+        creds_folder = "wmflabs"
+    elif branch == "master":
+        creds_folder = "wmflabs-staging"
+    else:
+        raise RuntimeError("I don't know how to deal with branch {0}"
+                           .format(branch))
+
+    # Clear out old custom config
+    sudo("find {0} ! -name '00-main.yaml' -type f -exec rm -f {{}} + ".format(os.path.join(config_config_dir, "*.yaml")))
+
+    # Transfer new custom config
+    creds_paths = os.path.join("config", creds_folder, "*.yaml")
+    for creds_path in glob.glob(creds_paths):
+        # Upload oauth creds
+        put(creds_path, config_config_dir, use_sudo=True)
+
+        creds_filename = os.path.basename(creds_path)
+        sudo("chown www-data:www-data " +
+             os.path.join(config_config_dir, creds_filename))
 
 
 def run_puppet():
