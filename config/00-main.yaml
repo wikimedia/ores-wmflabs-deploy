@@ -366,7 +366,7 @@ scorer_models:
   dewiki_revert:
     model_file: submodules/editquality/models/dewiki.reverted.gradient_boosting.model
   enwiki_wp10:
-    model_file: submodules/wikiclass/models/enwiki.nettrom_wp10.rf.model
+    model_file: submodules/wikiclass/models/enwiki.nettrom_wp10.gradient_boosting.model
   enwiki_revert:
     model_file: submodules/editquality/models/enwiki.reverted.gradient_boosting.model
   enwiki_damaging:
@@ -388,7 +388,7 @@ scorer_models:
   frwiki_revert:
     model_file: submodules/editquality/models/frwiki.reverted.gradient_boosting.model
   frwiki_wp10:
-    model_file: submodules/wikiclass/models/frwiki.wp10.rf.model
+    model_file: submodules/wikiclass/models/frwiki.wp10.gradient_boosting.model
   hewiki_revert:
     model_file: submodules/editquality/models/hewiki.reverted.gradient_boosting.model
   huwiki_revert:
@@ -424,7 +424,7 @@ scorer_models:
   ruwiki_revert:
     model_file: submodules/editquality/models/ruwiki.reverted.gradient_boosting.model
   ruwiki_wp10:
-    model_file: submodules/wikiclass/models/ruwiki.wp10.rf.model
+    model_file: submodules/wikiclass/models/ruwiki.wp10.gradient_boosting.model
   svwiki_revert:
     model_file: submodules/editquality/models/svwiki.reverted.gradient_boosting.model
   testwiki_revert:
