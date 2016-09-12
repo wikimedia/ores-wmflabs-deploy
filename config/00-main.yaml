@@ -40,6 +40,7 @@ scoring_systems:
       - enwiki
       - enwiktionary
       - eswiki
+      - eswikibooks
       - etwiki
       - fawiki
       - frwiki
@@ -125,6 +126,13 @@ scoring_contexts:
     extractor: eswiki_api
     scorer_models:
       reverted: eswiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
+  eswikibooks:
+    extractor: eswikibooks_api
+    scorer_models:
+      reverted: eswikibooks_revert
     precache:
       reverted:
         "on": ["edit"]
@@ -318,6 +326,8 @@ extractors:
     host: https://en.wiktionary.org
   eswiki_api:
     host: https://es.wikipedia.org
+  eswikibooks_api:
+    host: https://es.wikibooks.org
   etwiki_api:
     host: https://et.wikipedia.org
   fawiki_api:
@@ -377,6 +387,8 @@ scorer_models:
     model_file: submodules/editquality/models/enwiktionary.reverted.rf.model
   eswiki_revert:
     model_file: submodules/editquality/models/eswiki.reverted.gradient_boosting.model
+  eswikibooks_revert:
+    model_file: submodules/editquality/models/eswikibooks.reverted.gradient_boosting.model
   etwiki_revert:
     model_file: submodules/editquality/models/etwiki.reverted.gradient_boosting.model
   fawiki_damaging:
