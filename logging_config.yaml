@@ -5,7 +5,7 @@ loggers:
     level: ERROR
     handlers: [stdout]
   ores:
-    level: INFO
+    level: WARNING
     handlers: [stdout]
   celery:
     level: WARNING
