@@ -9,13 +9,18 @@ loggers:
     handlers: [stdout]
   celery:
     level: WARNING
-    handlers: [stdout]
+    handlers: [file]
 
 handlers:
   stdout:
     class: logging.StreamHandler
     formatter: basic_human
     stream: ext://sys.stdout
+  file:
+    class: logging.handlers.TimedRotatingFileHandler
+    filename: /srv/ores/logs/main.log
+    when: midnight
+    backupCount: 7
 
 formatters:
   basic_human: 
