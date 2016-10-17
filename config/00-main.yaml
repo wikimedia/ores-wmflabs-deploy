@@ -76,6 +76,7 @@ scoring_systems:
     CELERYD_MAX_TASKS_PER_CHILD: 100
     timeout: 15 # seconds
     queue_maxsize: 100 # pending tasks
+    CELERYD_HIJACK_ROOT_LOGGER: FALSE
 
 
 # Scorers
