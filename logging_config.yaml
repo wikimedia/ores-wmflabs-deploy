@@ -18,7 +18,7 @@ handlers:
     stream: ext://sys.stdout
   file:
     class: logging.handlers.TimedRotatingFileHandler
-    filename: /srv/ores/logs/main.log
+    filename: /srv/log/ores/app.log
     when: midnight
     backupCount: 7
 
