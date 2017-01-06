@@ -9,7 +9,7 @@
 	url = https://github.com/wiki-ai/editquality
 [submodule "submodules/wheels"]
 	path = submodules/wheels
-	url = https://gerrit.wikimedia.org/r/research/ores/wheels.git
+	url = https://github.com/wiki-ai/ores-wmflabs-deploy-wheels
 [submodule "submodules/ores"]
 	path = submodules/ores
 	url = https://github.com/wiki-ai/ores
