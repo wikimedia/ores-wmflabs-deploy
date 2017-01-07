@@ -1,6 +1,8 @@
 frozen-requirements.txt:
-	pip install -r requirements.txt && \
 	pip install -r submodules/ores/requirements.txt && \
+	pip install -r submodules/editquality/requirements.txt && \
+	pip install -r submodules/wikiclass/requirements.txt && \
+	pip install -r requirements.txt && \
 	pip freeze | grep -v ores | grep -v setuptools | grep -v pkg-resources > \
 	frozen-requirements.txt
 
