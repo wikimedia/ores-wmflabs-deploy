@@ -107,6 +107,7 @@ scoring_contexts:
     scorer_models:
       reverted: enwiki_revert
       wp10: enwiki_wp10
+      draftquality: enwiki_draftquality
       damaging: enwiki_damaging
       goodfaith: enwiki_goodfaith
     precache:
@@ -376,6 +377,8 @@ scorer_models:
     model_file: submodules/editquality/models/cswiki.reverted.gradient_boosting.model
   dewiki_revert:
     model_file: submodules/editquality/models/dewiki.reverted.gradient_boosting.model
+  enwiki_draftquality:
+    model_file: submodules/draftquality/models/enwiki.draft_quality.gradient_boosting.model
   enwiki_wp10:
     model_file: submodules/wikiclass/models/enwiki.nettrom_wp10.gradient_boosting.model
   enwiki_revert:
