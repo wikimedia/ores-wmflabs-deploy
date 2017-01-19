@@ -13,3 +13,6 @@
 [submodule "submodules/ores"]
 	path = submodules/ores
 	url = https://github.com/wiki-ai/ores
+[submodule "submodules/draftquality"]
+	path = submodules/draftquality
+	url = https://github.com/wiki-ai/draftquality
