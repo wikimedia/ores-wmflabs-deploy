@@ -257,7 +257,7 @@ scoring_contexts:
   rowiki:
     extractor: rowiki_api
     scorer_models:
-      reverted: ruwiki_revert
+      reverted: rowiki_revert
     precache:
       reverted:
         "on": ["edit"]
