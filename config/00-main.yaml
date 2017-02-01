@@ -92,8 +92,14 @@ scoring_contexts:
     extractor: cswiki_api
     scorer_models:
       reverted: cswiki_revert
+      damaging: cswiki_damaging
+      goodfaith: cswiki_goodfaith
     precache:
       reverted:
+        "on": ["edit"]
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   dewiki:
     extractor: dewiki_api
@@ -248,6 +254,13 @@ scoring_contexts:
     precache:
       reverted:
         "on": ["edit"]
+  rowiki:
+    extractor: rowiki_api
+    scorer_models:
+      reverted: ruwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
   ruwiki:
     extractor: ruwiki_api
     scorer_models:
@@ -352,6 +365,8 @@ extractors:
     host: https://pl.wikipedia.org
   ptwiki_api:
     host: https://pt.wikipedia.org
+  rowiki_api:
+    host: https://ro.wikipedia.org
   ruwiki_api:
     host: https://ru.wikipedia.org
   svwiki_api:
@@ -375,6 +390,10 @@ scorer_models:
     model_file: submodules/editquality/models/arwiki.reverted.gradient_boosting.model
   cswiki_revert:
     model_file: submodules/editquality/models/cswiki.reverted.gradient_boosting.model
+  cswiki_damaging:
+    model_file: submodules/editquality/models/cswiki.damaging.gradient_boosting.model
+  cswiki_goodfaith:
+    model_file: submodules/editquality/models/cswiki.goodfaith.gradient_boosting.model
   dewiki_revert:
     model_file: submodules/editquality/models/dewiki.reverted.gradient_boosting.model
   enwiki_draftquality:
@@ -433,6 +452,8 @@ scorer_models:
     model_file: submodules/editquality/models/ptwiki.goodfaith.gradient_boosting.model
   ptwiki_revert:
     model_file: submodules/editquality/models/ptwiki.reverted.gradient_boosting.model
+  rowiki_revert:
+    model_file: submodules/editquality/models/rowiki.reverted.gradient_boosting.model
   ruwiki_damaging:
     model_file: submodules/editquality/models/ruwiki.damaging.gradient_boosting.model
   ruwiki_goodfaith:
