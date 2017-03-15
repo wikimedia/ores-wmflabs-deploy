@@ -4,6 +4,7 @@ ores:
   wsgi:
     application_root: ""
     url_prefix: ""
+  home:
     footer: >
       Hosted by Wikimedia Labs &amp; written in
       <a href="https://python.org">Python 3</a>
