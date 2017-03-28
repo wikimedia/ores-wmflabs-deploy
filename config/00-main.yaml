@@ -53,6 +53,7 @@ scoring_systems:
       - huwiki
       - idwiki
       - itwiki
+      - kowiki
       - nlwiki
       - nowiki
       - plwiki
@@ -194,8 +195,14 @@ scoring_contexts:
     extractor: hewiki_api
     scorer_models:
       reverted: hewiki_revert
+      damaging: hewiki_damaging
+      goodfaith: hewiki_goodfaith
     precache:
       reverted:
+        "on": ["edit"]
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   huwiki:
     extractor: huwiki_api
@@ -215,6 +222,13 @@ scoring_contexts:
     extractor: itwiki_api
     scorer_models:
       reverted: itwiki_revert
+    precache:
+      reverted:
+        "on": ["edit"]
+  kowiki:
+    extractor: kowiki_api
+    scorer_models:
+      reverted: kowiki_revert
     precache:
       reverted:
         "on": ["edit"]
@@ -378,6 +392,8 @@ extractors:
     host: https://it.wikipedia.org
   nowiki_api:
     host: https://no.wikipedia.org
+  kowiki_api:
+    host: https://ko.wikipedia.org
   nlwiki_api:
     host: https://nl.wikipedia.org
   plwiki_api:
@@ -451,12 +467,18 @@ scorer_models:
     model_file: submodules/wikiclass/models/frwiki.wp10.gradient_boosting.model
   hewiki_revert:
     model_file: submodules/editquality/models/hewiki.reverted.gradient_boosting.model
+  hewiki_damaging:
+    model_file: submodules/editquality/models/hewiki.damaging.rf.model
+  hewiki_goodfaith:
+    model_file: submodules/editquality/models/hewiki.goodfaith.gradient_boosting.model
   huwiki_revert:
     model_file: submodules/editquality/models/huwiki.reverted.rf.model
   idwiki_revert:
     model_file: submodules/editquality/models/idwiki.reverted.gradient_boosting.model
   itwiki_revert:
     model_file: submodules/editquality/models/itwiki.reverted.gradient_boosting.model
+  kowiki_revert:
+    model_file: submodules/editquality/models/kowiki.reverted.gradient_boosting.model
   nlwiki_revert:
     model_file: submodules/editquality/models/nlwiki.reverted.gradient_boosting.model
   nlwiki_damaging:
