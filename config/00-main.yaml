@@ -390,12 +390,12 @@ extractors:
     host: https://id.wikipedia.org
   itwiki_api:
     host: https://it.wikipedia.org
-  nowiki_api:
-    host: https://no.wikipedia.org
   kowiki_api:
     host: https://ko.wikipedia.org
   nlwiki_api:
     host: https://nl.wikipedia.org
+  nowiki_api:
+    host: https://no.wikipedia.org
   plwiki_api:
     host: https://pl.wikipedia.org
   ptwiki_api:
