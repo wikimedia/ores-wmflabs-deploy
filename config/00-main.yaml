@@ -59,6 +59,7 @@ scoring_systems:
       - plwiki
       - ptwiki
       - ruwiki
+      - simplewiki
       - svwiki
       - testwiki
       - trwiki
@@ -122,12 +123,15 @@ scoring_contexts:
       draftquality: enwiki_draftquality
       damaging: enwiki_damaging
       goodfaith: enwiki_goodfaith
+      flesch: enwiki_flesch
     precache:
       damaging:
         "on": ["edit"]
       reverted:
         "on": ["edit"]
       goodfaith:
+        "on": ["edit"]
+      flesch:
         "on": ["edit"]
   enwiktionary:
     extractor: enwiktionary_api
@@ -305,6 +309,13 @@ scoring_contexts:
         "on": ["edit"]
       goodfaith:
         "on": ["edit"]
+  simplewiki:
+    extractor: simplewiki_api
+    scorer_models:
+      flesch: enwiki_flesch
+    precache:
+      flesch:
+        "on": ["edit"]
   svwiki:
     extractor: svwiki_api
     scorer_models:
@@ -410,6 +421,8 @@ extractors:
     host: https://ro.wikipedia.org
   ruwiki_api:
     host: https://ru.wikipedia.org
+  simplewiki_api:
+    host: https://simple.wikipedia.org
   svwiki_api:
     host: https://sv.wikipedia.org
   testwiki_offline:
@@ -540,3 +553,6 @@ scorer_models:
     model_file: submodules/editquality/models/wikidatawiki.goodfaith.gradient_boosting.model
   wikidata_revert:
     model_file: submodules/editquality/models/wikidatawiki.reverted.gradient_boosting.model
+  enwiki_flesch:
+    class: flesch_complexity.scorer_models.FleschComplexityModel
+    version: 0.0.1
