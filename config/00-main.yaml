@@ -363,12 +363,15 @@ scoring_contexts:
       reverted: wikidata_revert
       damaging: wikidata_damaging
       goodfaith: wikidata_goodfaith
+      itemquality: wikidata_itemquality
     precache:
       damaging:
         "on": ["nonbot_edit"]
       reverted:
         "on": ["nonbot_edit"]
       goodfaith:
+        "on": ["nonbot_edit"]
+      itemquality:
         "on": ["nonbot_edit"]
 
 # Feature extractors
@@ -553,6 +556,8 @@ scorer_models:
     model_file: submodules/editquality/models/wikidatawiki.goodfaith.gradient_boosting.model
   wikidata_revert:
     model_file: submodules/editquality/models/wikidatawiki.reverted.gradient_boosting.model
+  wikidata_itemquality:
+    model_file: submodules/wikiclass/models/wikidatawiki.item_quality.rf.model
   enwiki_flesch:
     class: flesch_complexity.scorer_models.FleschComplexityModel
     version: 0.0.1
