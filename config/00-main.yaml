@@ -11,6 +11,7 @@ ores:
     notice: >
       This the experimental version of ORES running in Wikimedia Labs.
       For the stable, production version of ORES, see <a href="https://ores.wikimedia.org">https://ores.wikimedia.org</a>
+    scheme: 'https'
   data_paths:
     nltk: /srv/ores/config/submodules/wheels/nltk/
 
@@ -49,6 +50,7 @@ scoring_systems:
       - fawiki
       - fiwiki
       - frwiki
+      - frwikisource
       - hewiki
       - huwiki
       - idwiki
@@ -58,6 +60,7 @@ scoring_systems:
       - nowiki
       - plwiki
       - ptwiki
+      - rowiki
       - ruwiki
       - simplewiki
       - svwiki
@@ -197,9 +200,22 @@ scoring_contexts:
     extractor: frwiki_api
     scorer_models:
       reverted: frwiki_revert
+      damaging: frwiki_damaging
+      goodfaith: frwiki_goodfaith
       wp10: frwiki_wp10
     precache:
       reverted:
+        "on": ["edit"]
+      damaging:
+        "on": ["edit"]
+      goodfaith:
+        "on": ["edit"]
+  frwikisource:
+    extractor: frwikisource_api
+    scorer_models:
+      pagelevel: frwikisource_pagelevel
+    precache:
+      pagelevel:
         "on": ["edit"]
   hewiki:
     extractor: hewiki_api
@@ -402,6 +418,8 @@ extractors:
     host: https://fi.wikipedia.org
   frwiki_api:
     host: https://fr.wikipedia.org
+  frwikisource_api:
+    host: https://fr.wikisource.org
   hewiki_api:
     host: https://he.wikipedia.org
   huwiki_api:
@@ -489,8 +507,14 @@ scorer_models:
     model_file: submodules/editquality/models/fiwiki.goodfaith.gradient_boosting.model
   frwiki_revert:
     model_file: submodules/editquality/models/frwiki.reverted.gradient_boosting.model
+  frwiki_damaging:
+    model_file: submodules/editquality/models/frwiki.damaging.gradient_boosting.model
+  frwiki_goodfaith:
+    model_file: submodules/editquality/models/frwiki.goodfaith.gradient_boosting.model
   frwiki_wp10:
     model_file: submodules/wikiclass/models/frwiki.wp10.gradient_boosting.model
+  frwikisource_pagelevel:
+    model_file: submodules/wikiclass/models/frwikisource.page_level.gradient_boosting.model
   hewiki_revert:
     model_file: submodules/editquality/models/hewiki.reverted.gradient_boosting.model
   hewiki_damaging:
@@ -539,7 +563,7 @@ scorer_models:
     model_file: submodules/editquality/models/svwiki.reverted.gradient_boosting.model
   testwiki_revert:
     class: ores.scorer_models.RevIdScorer
-    version: 0.0.2
+    version: 0.0.3
   trwiki_damaging:
     model_file: submodules/editquality/models/trwiki.damaging.gradient_boosting.model
   trwiki_goodfaith:
