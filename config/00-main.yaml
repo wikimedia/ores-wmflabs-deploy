@@ -352,6 +352,7 @@ scoring_contexts:
       reverted: trwiki_revert
       damaging: trwiki_damaging
       goodfaith: trwiki_goodfaith
+      wp10: trwiki_wp10
     precache:
       damaging:
         "on": ["edit"]
@@ -570,6 +571,8 @@ scorer_models:
     model_file: submodules/editquality/models/trwiki.goodfaith.gradient_boosting.model
   trwiki_revert:
     model_file: submodules/editquality/models/trwiki.reverted.gradient_boosting.model
+  trwiki_wp10:
+    model_file: submodules/wikiclass/models/trwiki.wp10.gradient_boosting.model
   ukwiki_revert:
     model_file: submodules/editquality/models/ukwiki.reverted.gradient_boosting.model
   viwiki_revert:
