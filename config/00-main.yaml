@@ -4,6 +4,9 @@ ores:
   wsgi:
     application_root: ""
     url_prefix: ""
+    scheme: 'https'
+    error_host: 'https://www.wikimedia.org'
+    error_alt: 'Wikimedia'
   home:
     footer: >
       Hosted by Wikimedia Labs &amp; written in
@@ -11,7 +14,6 @@ ores:
     notice: >
       This the experimental version of ORES running in Wikimedia Labs.
       For the stable, production version of ORES, see <a href="https://ores.wikimedia.org">https://ores.wikimedia.org</a>
-    scheme: 'https'
   data_paths:
     nltk: /srv/ores/config/submodules/wheels/nltk/
 
