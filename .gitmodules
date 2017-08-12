@@ -16,6 +16,3 @@
 [submodule "submodules/draftquality"]
 	path = submodules/draftquality
 	url = https://github.com/wiki-ai/draftquality
-[submodule "submodules/flesch_complexity"]
-	path = submodules/flesch_complexity
-	url = https://github.com/wiki-ai/flesch_complexity
