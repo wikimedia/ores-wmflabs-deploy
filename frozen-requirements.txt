@@ -23,8 +23,8 @@ mwapi==0.5.1
 mwcli==0.0.2
 mwparserfromhell==0.4.3
 mwreverts==0.0.6
-mwtypes==0.2.0
-mwxml==0.2.1
+mwtypes==0.3.0
+mwxml==0.3.3
 mysqltsv==0.0.7
 nltk==3.0.5
 nose==1.3.7
@@ -35,7 +35,7 @@ pytz==2012c
 pywikibase==0.0.4
 redis==2.10.5
 requests==2.9.1
-revscoring==1.3.10
+revscoring==2.0.2
 scikit-learn==0.17.1
 scipy==0.17.0
 six==1.10.0
