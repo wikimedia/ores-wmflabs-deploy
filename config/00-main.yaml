@@ -324,7 +324,8 @@ scoring_contexts:
   svwiki:
     extractor: svwiki_api
     scorer_models:
-      reverted: svwiki_revert
+      damaging: svwiki_damaging
+      goodfaith: svwiki_goodfaith
     precache:
       reverted:
         "on": ["edit"]
@@ -473,7 +474,7 @@ scorer_models:
   elwiki_revert:
     model_file: submodules/editquality/models/elwiki.reverted.gradient_boosting.model
   enwiki_draftquality:
-    model_file: submodules/draftquality/models/enwiki.draft_quality.gradient_boosting.model
+    model_file: submodules/draftquality/models/enwiki.draft_quality.gradient_boosting.model.bz2
   enwiki_wp10:
     model_file: submodules/wikiclass/models/enwiki.nettrom_wp10.gradient_boosting.model
   enwiki_damaging:
@@ -550,8 +551,10 @@ scorer_models:
     model_file: submodules/editquality/models/sqwiki.damaging.gradient_boosting.model
   sqwiki_goodfaith:
     model_file: submodules/editquality/models/sqwiki.goodfaith.gradient_boosting.model
-  svwiki_revert:
-    model_file: submodules/editquality/models/svwiki.reverted.gradient_boosting.model
+  svwiki_damaging:
+    model_file: submodules/editquality/models/svwiki.damaging.gradient_boosting.model
+  svwiki_goodfaith:
+    model_file: submodules/editquality/models/svwiki.goodfaith.gradient_boosting.model
   testwiki_revert:
     class: ores.scoring.models.RevIdScorer
     version: 0.0.3
