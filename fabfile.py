@@ -61,28 +61,31 @@ venv_dir = base_dir + '/venv'
 data_dir = base_dir + '/data'
 config_config_dir = config_dir + "/config"
 
+staging_branch = "master"
+deploy_branch = "deploy"
+
 def sr(*cmd):
     with shell_env(HOME='/srv/ores'):
         return sudo(' '.join(cmd), user='www-data')
 
 
 def initialize_staging_server():
-    initialize_server('master')
+    initialize_server(staging_branch)
     restart_uwsgi()
     restart_celery()
 
 
 def initialize_web_server():
-    initialize_server('deploy')
+    initialize_server(deploy_branch)
     restart_uwsgi()
 
 
 def initialize_worker_server():
-    initialize_server('deploy')
+    initialize_server(deploy_branch)
     restart_celery()
 
 
-def git_clone(branch='deploy'):
+def git_clone(branch=deploy_branch):
     sr('mkdir', '-p', config_dir)
     sr('chmod', '-R', '775', config_dir)
     # They need to be one command
@@ -91,7 +94,7 @@ def git_clone(branch='deploy'):
     sr('cd', config_dir, '&&', 'git', 'checkout', branch)
 
 
-def initialize_server(branch='deploy'):
+def initialize_server(branch=deploy_branch):
     """
     Setup an initial deployment on a fresh host.
 
@@ -109,7 +112,7 @@ def initialize_server(branch='deploy'):
 
 
 @roles('web', 'worker')
-def update_git(branch='deploy'):
+def update_git(branch=deploy_branch):
     with cd(config_dir):
         sr('git', 'fetch', 'origin')
         sr('git', 'reset', '--hard', 'origin/%s' % branch)
@@ -161,20 +164,20 @@ def clean_virtualenv():
 
 @roles('staging')
 def stage():
-    update_git('master')
-    update_custom_config('master')
+    update_git(staging_branch)
+    update_custom_config(staging_branch)
     update_virtualenv()
     restart_uwsgi()
     restart_celery()
 
 
-def update_custom_config(branch='deploy'):
+def update_custom_config(branch=deploy_branch):
     """
     Uploads config files to server
     """
-    if branch == "deploy":
+    if branch == deploy_branch:
         creds_folder = "wmflabs"
-    elif branch == "master":
+    elif branch == staging_branch:
         creds_folder = "wmflabs-staging"
     else:
         raise RuntimeError("I don't know how to deal with branch {0}"
