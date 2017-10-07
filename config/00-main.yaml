@@ -56,6 +56,7 @@ scoring_systems:
       - frwiki
       - frwikisource
       - hewiki
+      - hrwiki
       - huwiki
       - idwiki
       - itwiki
@@ -163,9 +164,12 @@ scoring_contexts:
   eswiki:
     extractor: eswiki_api
     scorer_models:
-      reverted: eswiki_revert
+      damaging: eswiki_damaging
+      goodfaith: eswiki_goodfaith
     precache:
-      reverted:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   etwiki:
     extractor: etwiki_api
@@ -224,6 +228,13 @@ scoring_contexts:
       damaging:
         "on": ["edit"]
       goodfaith:
+        "on": ["edit"]
+  hrwiki:
+    extractor: hrwiki_api
+    scorer_models:
+      reverted: hrwiki_revert
+    precache:
+      reverted:
         "on": ["edit"]
   huwiki:
     extractor: huwiki_api
@@ -418,6 +429,8 @@ extractors:
     host: https://fr.wikisource.org
   hewiki_api:
     host: https://he.wikipedia.org
+  hrwiki_api:
+    host: https://hr.wikipedia.org
   huwiki_api:
     host: https://hu.wikipedia.org
   idwiki_api:
@@ -483,8 +496,10 @@ scorer_models:
     model_file: submodules/editquality/models/enwiki.goodfaith.gradient_boosting.model
   enwiktionary_revert:
     model_file: submodules/editquality/models/enwiktionary.reverted.rf.model
-  eswiki_revert:
-    model_file: submodules/editquality/models/eswiki.reverted.gradient_boosting.model
+  eswiki_damaging:
+    model_file: submodules/editquality/models/eswiki.damaging.gradient_boosting.model
+  eswiki_goodfaith:
+    model_file: submodules/editquality/models/eswiki.goodfaith.gradient_boosting.model
   eswikibooks_revert:
     model_file: submodules/editquality/models/eswikibooks.reverted.gradient_boosting.model
   etwiki_damaging:
@@ -511,6 +526,8 @@ scorer_models:
     model_file: submodules/editquality/models/hewiki.damaging.rf.model
   hewiki_goodfaith:
     model_file: submodules/editquality/models/hewiki.goodfaith.gradient_boosting.model
+  hrwiki_revert:
+    model_file: submodules/editquality/models/hrwiki.reverted.gradient_boosting.model
   huwiki_revert:
     model_file: submodules/editquality/models/huwiki.reverted.rf.model
   idwiki_revert:
