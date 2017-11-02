@@ -284,8 +284,8 @@ scoring_contexts:
   plwiki:
     extractor: plwiki_api
     scorer_models:
-      goodfaith: plwiki_damaging
-      damaging: plwiki_goodfaith
+      goodfaith: plwiki_goodfaith
+      damaging: plwiki_damaging
     precache:
       damaging:
         "on": ["edit"]
