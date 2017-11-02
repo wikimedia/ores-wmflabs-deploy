@@ -152,6 +152,9 @@ def update_virtualenv():
     with cd(venv_dir):
         sr(venv_dir + '/bin/pip', 'install',
            '--use-wheel', '--no-deps',
+           config_dir + '/submodules/wheels/pip-*.whl')
+        sr(venv_dir + '/bin/pip', 'install',
+           '--use-wheel', '--no-deps',
            config_dir + '/submodules/wheels/*.whl')
 
 
