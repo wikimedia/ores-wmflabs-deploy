@@ -1,14 +1,29 @@
-frozen-requirements.txt:
-	pip install -r submodules/ores/requirements.txt && \
-	pip install -r submodules/editquality/requirements.txt && \
-	pip install -r submodules/wikiclass/requirements.txt && \
-	pip install -r requirements.txt && \
+REQUIREMENTS_FILES = \
+	submodules/ores/requirements.txt \
+	submodules/editquality/requirements.txt \
+	submodules/wikiclass/requirements.txt \
+	requirements.txt
+
+OMIT_WHEELS = \
+	ores \
+	editquality \
+	wikiclass \
+	setuptools \
+	pkg-resources
+
+pip_install:
+	pip install wheel
+	pip install --upgrade pip
+	for req_txt in $(REQUIREMENTS_FILES); do \
+	  pip install -r $$req_txt; \
+	done
+
+frozen-requirements.txt: pip_install
 	pip freeze | \
-	  grep -v ores | grep -v editquality | grep -v wikiclass | \
-	  grep -v setuptools | grep -v pkg-resources > \
+	  grep -v $(addprefix -e , $(OMIT_WHEELS)) > \
 	frozen-requirements.txt
 
-deployment_wheels:
+deployment_wheels: frozen-requirements.txt
 	mkdir -p wheels && \
-	pip wheel -r frozen-requirements.txt -w wheelhouse
+	pip wheel -r frozen-requirements.txt -w wheels
 
