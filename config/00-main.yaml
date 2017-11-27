@@ -157,9 +157,12 @@ scoring_contexts:
   eswikibooks:
     extractor: eswikibooks_api
     scorer_models:
-      reverted: eswikibooks_revert
+      damaging: eswikibooks_damaging
+      goodfaith: eswikibooks_goodfaith
     precache:
-      reverted:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   eswiki:
     extractor: eswiki_api
@@ -473,7 +476,7 @@ extractors:
 # Scorer models
 scorer_models:
   defaults:
-    class: revscoring.scorer_models.MLScorerModel
+    class: revscoring.Model
   arwiki_revert:
     model_file: submodules/editquality/models/arwiki.reverted.gradient_boosting.model
   bnwiki_revert:
@@ -500,8 +503,10 @@ scorer_models:
     model_file: submodules/editquality/models/eswiki.damaging.gradient_boosting.model
   eswiki_goodfaith:
     model_file: submodules/editquality/models/eswiki.goodfaith.gradient_boosting.model
-  eswikibooks_revert:
-    model_file: submodules/editquality/models/eswikibooks.reverted.gradient_boosting.model
+  eswikibooks_damaging:
+    model_file: submodules/editquality/models/eswikibooks.damaging.gradient_boosting.model
+  eswikibooks_goodfaith:
+    model_file: submodules/editquality/models/eswikibooks.goodfaith.gradient_boosting.model
   etwiki_damaging:
     model_file: submodules/editquality/models/etwiki.damaging.gradient_boosting.model
   etwiki_goodfaith:
