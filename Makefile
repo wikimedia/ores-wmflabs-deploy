@@ -13,6 +13,10 @@ OMIT_WHEELS = \
 	setuptools \
 	pkg-resources
 
+.DEFAULT_GOAL := all
+
+all: clean_env deployment_wheels
+
 clean_env:
 	if [ -n "$$VIRTUAL_ENV" ]; then \
 	  pip freeze | xargs pip uninstall -y; \
