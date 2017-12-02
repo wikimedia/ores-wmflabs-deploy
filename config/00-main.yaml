@@ -67,6 +67,7 @@ scoring_systems:
       - ptwiki
       - rowiki
       - ruwiki
+      - simplewiki
       - sqwiki
       - svwiki
       - testwiki
@@ -320,6 +321,18 @@ scoring_contexts:
       damaging: ruwiki_damaging
       goodfaith: ruwiki_goodfaith
       wp10: ruwiki_wp10
+    precache:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
+        "on": ["edit"]
+  simplewiki:
+    extractor: simplewiki_api
+    scorer_models:
+      wp10: enwiki_wp10
+      draftquality: enwiki_draftquality
+      damaging: enwiki_damaging
+      goodfaith: enwiki_goodfaith
     precache:
       damaging:
         "on": ["edit"]
