@@ -47,7 +47,7 @@ from fabric.api import cd, env, put, roles, shell_env, sudo
 env.roledefs = {
     'web': ['ores-web-03.eqiad.wmflabs', #'ores-web-04.eqiad.wmflabs',
             'ores-web-05.eqiad.wmflabs'],
-    'staging': ['ores-staging-02.eqiad.wmflabs'],
+    'staging': ['ores-staging-01.eqiad.wmflabs'],
     'worker': ['ores-worker-05.eqiad.wmflabs', 'ores-worker-07.eqiad.wmflabs',
                'ores-worker-06.eqiad.wmflabs', 'ores-worker-08.eqiad.wmflabs',
                'ores-worker-09.eqiad.wmflabs', 'ores-worker-10.eqiad.wmflabs'],
@@ -86,6 +86,7 @@ def initialize_worker_server():
 
 
 def git_clone(branch=deploy_branch):
+    sr('rm', '-rf', config_dir)
     sr('mkdir', '-p', config_dir)
     sr('chmod', '-R', '775', config_dir)
     # They need to be one command
