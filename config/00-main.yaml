@@ -165,6 +165,8 @@ scoring_contexts:
         "on": ["edit"]
       goodfaith:
         "on": ["edit"]
+      drafttopic:
+        "on": ["page_creation"]
   enwiktionary:
     extractor: enwiktionary_api
     scorer_models:
