@@ -1,6 +1,6 @@
-[submodule "submodules/wikiclass"]
-	path = submodules/wikiclass
-	url = https://github.com/wiki-ai/wikiclass
+[submodule "submodules/articlequality"]
+	path = submodules/articlequality
+	url = https://github.com/wiki-ai/articlequality
 [submodule "submodules/editquality"]
 	path = submodules/editquality
 	url = https://github.com/wiki-ai/editquality
