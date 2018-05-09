@@ -1,6 +1,3 @@
-[submodule "wb-vandalism"]
-	path = submodules/wb-vandalism
-	url = https://github.com/wiki-ai/wb-vandalism
 [submodule "submodules/wikiclass"]
 	path = submodules/wikiclass
 	url = https://github.com/wiki-ai/wikiclass
@@ -16,3 +13,6 @@
 [submodule "submodules/draftquality"]
 	path = submodules/draftquality
 	url = https://github.com/wiki-ai/draftquality
+[submodule "submodules/drafttopic"]
+	path = submodules/drafttopic
+	url = https://github.com/wiki-ai/drafttopic
