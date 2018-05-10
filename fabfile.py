@@ -118,6 +118,7 @@ def update_git(branch=deploy_branch):
         sr('git', 'fetch', 'origin')
         sr('git', 'reset', '--hard', 'origin/%s' % branch)
         sr('git', 'submodule', 'update', '--init', '--recursive')
+        sr('git', 'submodule', 'foreach', 'git lfs pull')
 
 
 @roles('web')
@@ -132,6 +133,7 @@ def restart_celery():
 
 @roles('web')
 def deploy_web():
+    sudo('apt-get install git-lfs -y')
     update_git()
     update_custom_config()
     update_virtualenv()
@@ -140,6 +142,7 @@ def deploy_web():
 
 @roles('worker')
 def deploy_celery():
+    sudo('apt-get install git-lfs -y')
     update_git()
     update_custom_config()
     update_virtualenv()
