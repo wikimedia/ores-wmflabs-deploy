@@ -1,15 +1,17 @@
 REQUIREMENTS_FILES = \
 	submodules/ores/requirements.txt \
 	submodules/draftquality/requirements.txt \
+	submodules/drafttopic/requirements.txt \
 	submodules/editquality/requirements.txt \
-	submodules/wikiclass/requirements.txt \
+	submodules/articlequality/requirements.txt \
 	requirements.txt
 
 OMIT_WHEELS = \
 	ores \
 	draftquality \
+	drafttopic \
 	editquality \
-	wikiclass \
+	articlequality \
 	setuptools \
 	pkg-resources
 

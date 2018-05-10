@@ -63,6 +63,7 @@ scoring_systems:
       - iswiki
       - itwiki
       - kowiki
+      - lvwiki
       - nlwiki
       - nowiki
       - plwiki
@@ -103,9 +104,12 @@ scoring_contexts:
   arwiki:
     extractor: arwiki_api
     scorer_models:
-      reverted: arwiki_revert
+      damaging: arwiki_damaging
+      goodfaith: arwiki_goodfaith
     precache:
-      reverted:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   bnwiki:
     extractor: bnwiki_api
@@ -113,6 +117,16 @@ scoring_contexts:
       reverted: bnwiki_revert
     precache:
       reverted:
+        "on": ["edit"]
+  cawiki:
+    extractor: cawiki_api
+    scorer_models:
+      damaging: cawiki_damaging
+      goodfaith: cawiki_goodfaith
+    precache:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   cswiki:
     extractor: cswiki_api
@@ -143,6 +157,7 @@ scoring_contexts:
     scorer_models:
       wp10: enwiki_wp10
       draftquality: enwiki_draftquality
+      drafttopic: enwiki_drafttopic
       damaging: enwiki_damaging
       goodfaith: enwiki_goodfaith
     precache:
@@ -150,6 +165,8 @@ scoring_contexts:
         "on": ["edit"]
       goodfaith:
         "on": ["edit"]
+      drafttopic:
+        "on": ["page_creation"]
   enwiktionary:
     extractor: enwiktionary_api
     scorer_models:
@@ -252,9 +269,12 @@ scoring_contexts:
   huwiki:
     extractor: huwiki_api
     scorer_models:
-      reverted: huwiki_revert
+      damaging: huwiki_damaging
+      goodfaith: huwiki_goodfaith
     precache:
-      reverted:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   idwiki:
     extractor: idwiki_api
@@ -283,6 +303,16 @@ scoring_contexts:
       reverted: kowiki_revert
     precache:
       reverted:
+        "on": ["edit"]
+  lvwiki:
+    extractor: lvwiki_api
+    scorer_models:
+      damaging: lvwiki_damaging
+      goodfaith: lvwiki_goodfaith
+    precache:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   nlwiki:
     extractor: nlwiki_api
@@ -475,6 +505,8 @@ extractors:
     host: https://it.wikipedia.org
   kowiki_api:
     host: https://ko.wikipedia.org
+  lvwiki_api:
+    host: https://lv.wikipedia.org
   nlwiki_api:
     host: https://nl.wikipedia.org
   nowiki_api:
@@ -510,10 +542,16 @@ extractors:
 scorer_models:
   defaults:
     class: revscoring.Model
-  arwiki_revert:
-    model_file: submodules/editquality/models/arwiki.reverted.gradient_boosting.model
+  arwiki_damaging:
+    model_file: submodules/editquality/models/arwiki.damaging.gradient_boosting.model
+  arwiki_goodfaith:
+    model_file: submodules/editquality/models/arwiki.goodfaith.gradient_boosting.model
   bnwiki_revert:
     model_file: submodules/editquality/models/bnwiki.reverted.gradient_boosting.model
+  cawiki_damaging:
+    model_file: submodules/editquality/models/cawiki.damaging.gradient_boosting.model
+  cawiki_goodfaith:
+    model_file: submodules/editquality/models/cawiki.goodfaith.gradient_boosting.model
   cswiki_damaging:
     model_file: submodules/editquality/models/cswiki.damaging.gradient_boosting.model
   cswiki_goodfaith:
@@ -525,11 +563,13 @@ scorer_models:
   enwiki_draftquality:
     model_file: submodules/draftquality/models/enwiki.draft_quality.gradient_boosting.model.bz2
   enwiki_wp10:
-    model_file: submodules/wikiclass/models/enwiki.nettrom_wp10.gradient_boosting.model
+    model_file: submodules/articlequality/models/enwiki.nettrom_wp10.gradient_boosting.model
   enwiki_damaging:
     model_file: submodules/editquality/models/enwiki.damaging.gradient_boosting.model
   enwiki_goodfaith:
     model_file: submodules/editquality/models/enwiki.goodfaith.gradient_boosting.model
+  enwiki_drafttopic:
+    model_file: submodules/drafttopic/models/enwiki.drafttopic.gradient_boosting.model
   enwiktionary_revert:
     model_file: submodules/editquality/models/enwiktionary.reverted.rf.model
   eswiki_damaging:
@@ -559,17 +599,19 @@ scorer_models:
   frwiki_goodfaith:
     model_file: submodules/editquality/models/frwiki.goodfaith.gradient_boosting.model
   frwiki_wp10:
-    model_file: submodules/wikiclass/models/frwiki.wp10.gradient_boosting.model
+    model_file: submodules/articlequality/models/frwiki.wp10.gradient_boosting.model
   frwikisource_pagelevel:
-    model_file: submodules/wikiclass/models/frwikisource.page_level.gradient_boosting.model
+    model_file: submodules/articlequality/models/frwikisource.page_level.gradient_boosting.model
   hewiki_damaging:
     model_file: submodules/editquality/models/hewiki.damaging.rf.model
   hewiki_goodfaith:
     model_file: submodules/editquality/models/hewiki.goodfaith.gradient_boosting.model
   hrwiki_revert:
     model_file: submodules/editquality/models/hrwiki.reverted.gradient_boosting.model
-  huwiki_revert:
-    model_file: submodules/editquality/models/huwiki.reverted.rf.model
+  huwiki_damaging:
+    model_file: submodules/editquality/models/huwiki.damaging.gradient_boosting.model
+  huwiki_goodfaith:
+    model_file: submodules/editquality/models/huwiki.goodfaith.gradient_boosting.model
   idwiki_revert:
     model_file: submodules/editquality/models/idwiki.reverted.gradient_boosting.model
   iswiki_revert:
@@ -580,6 +622,10 @@ scorer_models:
     model_file: submodules/editquality/models/jawiki.reverted.gradient_boosting.model
   kowiki_revert:
     model_file: submodules/editquality/models/kowiki.reverted.gradient_boosting.model
+  lvwiki_damaging:
+    model_file: submodules/editquality/models/lvwiki.damaging.gradient_boosting.model
+  lvwiki_goodfaith:
+    model_file: submodules/editquality/models/lvwiki.goodfaith.gradient_boosting.model
   nlwiki_damaging:
     model_file: submodules/editquality/models/nlwiki.damaging.gradient_boosting.model
   nlwiki_goodfaith:
@@ -594,8 +640,6 @@ scorer_models:
     model_file: submodules/editquality/models/ptwiki.damaging.gradient_boosting.model
   ptwiki_goodfaith:
     model_file: submodules/editquality/models/ptwiki.goodfaith.gradient_boosting.model
-  rowiki_revert:
-    model_file: submodules/editquality/models/rowiki.reverted.gradient_boosting.model
   rowiki_damaging:
     model_file: submodules/editquality/models/rowiki.damaging.gradient_boosting.model
   rowiki_goodfaith:
@@ -605,7 +649,7 @@ scorer_models:
   ruwiki_goodfaith:
     model_file: submodules/editquality/models/ruwiki.goodfaith.gradient_boosting.model
   ruwiki_wp10:
-    model_file: submodules/wikiclass/models/ruwiki.wp10.gradient_boosting.model
+    model_file: submodules/articlequality/models/ruwiki.wp10.gradient_boosting.model
   sqwiki_damaging:
     model_file: submodules/editquality/models/sqwiki.damaging.gradient_boosting.model
   sqwiki_goodfaith:
@@ -624,7 +668,7 @@ scorer_models:
   trwiki_goodfaith:
     model_file: submodules/editquality/models/trwiki.goodfaith.gradient_boosting.model
   trwiki_wp10:
-    model_file: submodules/wikiclass/models/trwiki.wp10.gradient_boosting.model
+    model_file: submodules/articlequality/models/trwiki.wp10.gradient_boosting.model
   ukwiki_revert:
     model_file: submodules/editquality/models/ukwiki.reverted.gradient_boosting.model
   viwiki_revert:
@@ -634,4 +678,4 @@ scorer_models:
   wikidata_goodfaith:
     model_file: submodules/editquality/models/wikidatawiki.goodfaith.gradient_boosting.model
   wikidata_itemquality:
-    model_file: submodules/wikiclass/models/wikidatawiki.item_quality.rf.model
+    model_file: submodules/articlequality/models/wikidatawiki.item_quality.rf.model
