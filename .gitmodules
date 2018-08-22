@@ -1,21 +1,21 @@
 [submodule "submodules/articlequality"]
 	path = submodules/articlequality
-	url = https://github.com/wiki-ai/articlequality
+	url = https://github.com/wikimedia/articlequality
 [submodule "submodules/editquality"]
 	path = submodules/editquality
-	url = https://github.com/wiki-ai/editquality
+	url = https://github.com/wikimedia/editquality
 [submodule "submodules/wheels"]
 	path = submodules/wheels
 	url = https://gerrit.wikimedia.org/r/research/ores/wheels.git
 [submodule "submodules/ores"]
 	path = submodules/ores
-	url = https://github.com/wiki-ai/ores
+	url = https://github.com/wikimedia/ores
 [submodule "submodules/draftquality"]
 	path = submodules/draftquality
-	url = https://github.com/wiki-ai/draftquality
+	url = https://github.com/wikimedia/draftquality
 [submodule "submodules/drafttopic"]
 	path = submodules/drafttopic
-	url = https://github.com/wiki-ai/drafttopic
+	url = https://github.com/wikimedia/drafttopic
 [submodule "submodules/assets"]
 	path = submodules/assets
 	url = https://gerrit.wikimedia.org/r/scoring/ores/assets.git

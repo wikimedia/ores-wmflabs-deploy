@@ -91,7 +91,7 @@ def git_clone(branch=deploy_branch):
     sr('chmod', '-R', '775', config_dir)
     # They need to be one command
     sr('cd', '/', '&&', 'git', 'clone', '--recursive',
-       'https://github.com/wiki-ai/ores-wikimedia-config.git', config_dir)
+       'https://github.com/wikimedia/ores-wikimedia-config.git', config_dir)
     sr('cd', config_dir, '&&', 'git', 'checkout', branch)
 
 
