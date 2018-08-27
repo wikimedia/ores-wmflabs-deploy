@@ -155,7 +155,8 @@ scoring_contexts:
   enwiki:
     extractor: enwiki_api
     scorer_models:
-      wp10: enwiki_wp10
+      articlequality: enwiki_articlequality
+      wp10: enwiki_articlequality
       draftquality: enwiki_draftquality
       drafttopic: enwiki_drafttopic
       damaging: enwiki_damaging
@@ -236,7 +237,8 @@ scoring_contexts:
     scorer_models:
       damaging: frwiki_damaging
       goodfaith: frwiki_goodfaith
-      wp10: frwiki_wp10
+      wp10: frwiki_articlequality
+      articlequality: frwiki_articlequality
     precache:
       damaging:
         "on": ["edit"]
@@ -366,7 +368,8 @@ scoring_contexts:
     scorer_models:
       damaging: ruwiki_damaging
       goodfaith: ruwiki_goodfaith
-      wp10: ruwiki_wp10
+      wp10: ruwiki_articlequality
+      articlequality: ruwiki_articlequality
     precache:
       damaging:
         "on": ["edit"]
@@ -375,7 +378,8 @@ scoring_contexts:
   simplewiki:
     extractor: simplewiki_api
     scorer_models:
-      wp10: enwiki_wp10
+      wp10: enwiki_articlequality
+      articlequality: enwiki_articlequality
       draftquality: enwiki_draftquality
       damaging: enwiki_damaging
       goodfaith: enwiki_goodfaith
@@ -421,7 +425,8 @@ scoring_contexts:
     scorer_models:
       damaging: trwiki_damaging
       goodfaith: trwiki_goodfaith
-      wp10: trwiki_wp10
+      wp10: trwiki_articlequality
+      articlequality: trwiki_articlequality
     precache:
       damaging:
         "on": ["edit"]
@@ -562,7 +567,7 @@ scorer_models:
     model_file: submodules/editquality/models/elwiki.reverted.gradient_boosting.model
   enwiki_draftquality:
     model_file: submodules/draftquality/models/enwiki.draft_quality.gradient_boosting.model.bz2
-  enwiki_wp10:
+  enwiki_articlequality:
     model_file: submodules/articlequality/models/enwiki.nettrom_wp10.gradient_boosting.model
   enwiki_damaging:
     model_file: submodules/editquality/models/enwiki.damaging.gradient_boosting.model
@@ -598,7 +603,7 @@ scorer_models:
     model_file: submodules/editquality/models/frwiki.damaging.gradient_boosting.model
   frwiki_goodfaith:
     model_file: submodules/editquality/models/frwiki.goodfaith.gradient_boosting.model
-  frwiki_wp10:
+  frwiki_articlequality:
     model_file: submodules/articlequality/models/frwiki.wp10.gradient_boosting.model
   frwikisource_pagelevel:
     model_file: submodules/articlequality/models/frwikisource.page_level.gradient_boosting.model
@@ -648,7 +653,7 @@ scorer_models:
     model_file: submodules/editquality/models/ruwiki.damaging.gradient_boosting.model
   ruwiki_goodfaith:
     model_file: submodules/editquality/models/ruwiki.goodfaith.gradient_boosting.model
-  ruwiki_wp10:
+  ruwiki_articlequality:
     model_file: submodules/articlequality/models/ruwiki.wp10.gradient_boosting.model
   sqwiki_damaging:
     model_file: submodules/editquality/models/sqwiki.damaging.gradient_boosting.model
@@ -667,7 +672,7 @@ scorer_models:
     model_file: submodules/editquality/models/trwiki.damaging.gradient_boosting.model
   trwiki_goodfaith:
     model_file: submodules/editquality/models/trwiki.goodfaith.gradient_boosting.model
-  trwiki_wp10:
+  trwiki_articlequality:
     model_file: submodules/articlequality/models/trwiki.wp10.gradient_boosting.model
   ukwiki_revert:
     model_file: submodules/editquality/models/ukwiki.reverted.gradient_boosting.model
