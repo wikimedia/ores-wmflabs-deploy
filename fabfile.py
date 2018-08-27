@@ -49,8 +49,7 @@ env.roledefs = {
             'ores-web-02.eqiad.wmflabs'],
     'staging': ['ores-staging-01.eqiad.wmflabs'],
     'worker': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs',
-               'ores-worker-03.eqiad.wmflabs', 'ores-worker-04.eqiad.wmflabs',
-               'ores-worker-05.eqiad.wmflabs', 'ores-worker-06.eqiad.wmflabs'],
+               'ores-worker-03.eqiad.wmflabs', 'ores-worker-04.eqiad.wmflabs',]
 }
 env.use_ssh_config = True
 env.shell = '/bin/bash -c'
