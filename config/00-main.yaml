@@ -21,7 +21,7 @@ ores:
 score_caches:
   ores_redis:
     class: ores.score_caches.Redis
-    host: ores-redis-03
+    host: ores-redis-02
     port: 6380
     prefix: "ores"
     socket_timeout: 15
@@ -94,9 +94,9 @@ scoring_systems:
     workers: 8
   celery_queue:
     class: ores.scoring_systems.CeleryQueue
-    BROKER_URL: redis://ores-redis-03:6379
+    BROKER_URL: redis://ores-redis-02:6379
     BROKER_TRANSPORT_OPTIONS: {'socket_timeout': 15} # seconds
-    CELERY_RESULT_BACKEND: redis://ores-redis-03:6379
+    CELERY_RESULT_BACKEND: redis://ores-redis-02:6379
     CELERY_ACCEPT_CONTENT: ['pickle']
     CELERY_TASK_SERIALIZER: 'pickle'
     CELERY_RESULT_SERIALIZER: 'pickle'
