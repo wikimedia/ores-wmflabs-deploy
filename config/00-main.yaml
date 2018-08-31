@@ -26,13 +26,10 @@ score_caches:
     prefix: "ores"
     socket_timeout: 15
 
-# Turning the lb and redis nodes to a swiss knife
-# This is not the worst thing I've done in my life
-# but it's among the worst.
 lock_managers:
   pool_counter:
-    - ores-lb-02.eqiad.wmflabs:7531
-    - ores-redis-02.eqiad.wmflabs:7531
+    - ores-poolcounter-1:7531
+    - ores-poolcounter-2:7531
 
 # Metrics collection options
 metrics_collectors:
@@ -47,6 +44,7 @@ metrics_collectors:
 scoring_systems:
   defaults:
     score_cache: ores_redis
+    lock_manager: pool_counter
     metrics_collector: wmflabs_statsd
     scoring_contexts:
       - arwiki
