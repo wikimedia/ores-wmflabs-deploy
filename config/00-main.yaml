@@ -29,7 +29,6 @@ score_caches:
 lock_managers:
   pool_counter:
     - ores-poolcounter-1:7531
-    - ores-poolcounter-2:7531
 
 # Metrics collection options
 metrics_collectors:
