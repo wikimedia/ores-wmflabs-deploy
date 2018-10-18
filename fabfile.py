@@ -188,9 +188,6 @@ def update_custom_config(branch=deploy_branch):
         raise RuntimeError("I don't know how to deal with branch {0}"
                            .format(branch))
 
-    # Clear out old custom config
-    sudo("find {0} ! -name '00-main.yaml' -type f -exec rm -f {{}} + ".format(os.path.join(config_config_dir, "*.yaml")))
-
     # Transfer new custom config
     creds_paths = os.path.join("config", creds_folder, "*.yaml")
     for creds_path in glob.glob(creds_paths):
