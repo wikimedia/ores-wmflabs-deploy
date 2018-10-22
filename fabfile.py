@@ -46,6 +46,7 @@ from fabric.api import cd, env, put, roles, shell_env, sudo
 
 env.roledefs = {
     'web': ['ores-web-01.eqiad.wmflabs',
+            'ores-web-03.eqiad.wmflabs',
             'ores-web-02.eqiad.wmflabs'],
     'staging': ['ores-staging-01.eqiad.wmflabs'],
     'worker': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs',]
@@ -89,7 +90,7 @@ def git_clone(branch=deploy_branch):
     sr('chmod', '-R', '775', config_dir)
     # They need to be one command
     sr('cd', '/', '&&', 'git', 'clone', '--recursive',
-       'https://github.com/wikimedia/ores-wikimedia-config.git', config_dir)
+            'https://github.com/wikimedia/ores-wmflabs-deploy.git', config_dir)
     sr('cd', config_dir, '&&', 'git', 'checkout', branch)
 
 
