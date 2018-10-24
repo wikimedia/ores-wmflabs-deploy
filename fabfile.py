@@ -157,8 +157,7 @@ def update_virtualenv():
 #           '--use-wheel', '--no-deps',
 #           config_dir + '/submodules/wheels/pip-*.whl')
         sr(venv_dir + '/bin/pip', 'install',
-           '--use-wheel', '--no-deps',
-           config_dir + '/submodules/wheels/*.whl')
+           '--no-deps', config_dir + '/submodules/wheels/*.whl')
 
 
 @roles('web', 'worker')
