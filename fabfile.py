@@ -116,7 +116,7 @@ def update_git(branch=deploy_branch):
     with cd(config_dir):
         sr('git', 'fetch', 'origin')
         sr('git', 'reset', '--hard', 'origin/%s' % branch)
-        sr('git', 'submodule', 'update', '--init', '--recursive')
+        sr('git', 'submodule', 'update', '--init', '--recursive', '--force')
         sr('git', 'submodule', 'foreach', 'git lfs pull')
 
 
