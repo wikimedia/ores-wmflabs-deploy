@@ -64,6 +64,7 @@ scoring_systems:
       - fiwiki
       - frwiki
       - frwikisource
+      - glwiki
       - hewiki
       - hrwiki
       - huwiki
