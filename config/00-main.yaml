@@ -221,9 +221,12 @@ scoring_contexts:
   eswikiquote:
     extractor: eswikiquote_api
     scorer_models:
-      reverted: eswikiquote_revert
+      damaging: eswikiquote_damaging
+      goodfaith: eswikiquote_goodfaith
     precache:
-      reverted:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   etwiki:
     extractor: etwiki_api
@@ -677,8 +680,10 @@ scorer_models:
     model_file: submodules/editquality/models/eswikibooks.damaging.gradient_boosting.model
   eswikibooks_goodfaith:
     model_file: submodules/editquality/models/eswikibooks.goodfaith.gradient_boosting.model
-  eswikiquote_revert:
-    model_file: submodules/editquality/models/eswikiquote.reverted.gradient_boosting.model
+  eswikiquote_damaging:
+    model_file: submodules/editquality/models/eswikiquote.damaging.gradient_boosting.model
+  eswikiquote_goodfaith:
+    model_file: submodules/editquality/models/eswikiquote.goodfaith.gradient_boosting.model
   etwiki_damaging:
     model_file: submodules/editquality/models/etwiki.damaging.gradient_boosting.model
   etwiki_goodfaith:
@@ -791,4 +796,4 @@ scorer_models:
   wikidata_goodfaith:
     model_file: submodules/editquality/models/wikidatawiki.goodfaith.gradient_boosting.model
   wikidata_itemquality:
-    model_file: submodules/articlequality/models/wikidatawiki.item_quality.rf.model
+    model_file: submodules/articlequality/models/wikidatawiki.item_quality.gradient_boosting.model
