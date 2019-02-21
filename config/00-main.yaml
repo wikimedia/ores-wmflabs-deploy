@@ -104,7 +104,7 @@ scoring_systems:
     broker_transport_options: {'socket_timeout': 15} # seconds
     result_backend: redis://ores-redis-02:6379
     accept_content: ['pickle', 'json']
-    task_serializer: 'pickle'
+    task_serializer: 'json'
     result_serializer: 'json'
     worker_concurrency: 4
     worker_max_tasks_per_child: 100
