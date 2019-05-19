@@ -1,6 +1,9 @@
 # Local config
 config/99-local.yaml
 
+# Build wheels
+wheels/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
