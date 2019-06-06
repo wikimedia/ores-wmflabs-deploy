@@ -92,6 +92,7 @@ scoring_systems:
       - ukwiki
       - viwiki
       - wikidatawiki
+      - zhwiki
   local_single_thread:
     class: ores.scoring_systems.SingleThread
   local_process_pool:
@@ -475,10 +476,13 @@ scoring_contexts:
     scorer_models:
       damaging: svwiki_damaging
       goodfaith: svwiki_goodfaith
+      articlequality: svwiki_articlequality
     precache:
       damaging:
         "on": ["edit"]
       goodfaith:
+        "on": ["edit"]
+      articlequality:
         "on": ["edit"]
   tawiki:
     extractor: tawiki_api
@@ -542,6 +546,16 @@ scoring_contexts:
       goodfaith:
         "on": ["nonbot_edit"]
       itemquality:
+        "on": ["edit"]
+  zhwiki:
+    extractor: zhwiki_api
+    scorer_models:
+      damaging: zhwiki_damaging
+      goodfaith: zhwiki_goodfaith
+    precache:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
 
 # Feature extractors
@@ -642,6 +656,8 @@ extractors:
     host: https://vi.wikipedia.org
   wikidata_api:
     host: https://wikidata.org
+  zhwiki_api:
+    host: https://zh.wikipedia.org
 
 # Scorer models
 scorer_models:
@@ -786,6 +802,8 @@ scorer_models:
     model_file: submodules/editquality/models/srwiki.damaging.gradient_boosting.model
   srwiki_goodfaith:
     model_file: submodules/editquality/models/srwiki.goodfaith.gradient_boosting.model
+  svwiki_articlequality:
+    model_file: submodules/articlequality/models/svwiki.wp10.gradient_boosting.model
   svwiki_damaging:
     model_file: submodules/editquality/models/svwiki.damaging.gradient_boosting.model
   svwiki_goodfaith:
@@ -813,3 +831,7 @@ scorer_models:
     model_file: submodules/editquality/models/wikidatawiki.goodfaith.gradient_boosting.model
   wikidata_itemquality:
     model_file: submodules/articlequality/models/wikidatawiki.item_quality.gradient_boosting.model
+  zhwiki_damaging:
+    model_file: submodules/editquality/models/zhwiki.damaging.gradient_boosting.model
+  zhwiki_goodfaith:
+    model_file: submodules/editquality/models/zhwiki.goodfaith.gradient_boosting.model
