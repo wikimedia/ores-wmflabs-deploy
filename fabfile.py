@@ -118,6 +118,7 @@ def update_git(branch=deploy_branch):
         sr('git', 'reset', '--hard', 'origin/%s' % branch)
         sr('git', 'submodule', 'update', '--init', '--recursive', '--force')
         sr('git', 'submodule', 'foreach', 'git lfs pull')
+        sr('git', 'submodule', 'foreach', 'git lfs prune')
 
 
 @roles('web')
