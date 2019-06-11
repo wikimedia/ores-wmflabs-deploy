@@ -355,9 +355,12 @@ scoring_contexts:
   jawiki:
     extractor: jawiki_api
     scorer_models:
-      reverted: jawiki_revert
+      damaging: jawiki_damaging
+      goodfaith: jawiki_goodfaith
     precache:
-      reverted:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   kowiki:
     extractor: kowiki_api
@@ -758,8 +761,10 @@ scorer_models:
     model_file: submodules/editquality/models/itwiki.damaging.gradient_boosting.model
   itwiki_goodfaith:
     model_file: submodules/editquality/models/itwiki.goodfaith.gradient_boosting.model
-  jawiki_revert:
-    model_file: submodules/editquality/models/jawiki.reverted.gradient_boosting.model
+  jawiki_damaging:
+    model_file: submodules/editquality/models/jawiki.damaging.gradient_boosting.model
+  jawiki_goodfaith:
+    model_file: submodules/editquality/models/jawiki.goodfaith.gradient_boosting.model
   kowiki_damaging:
     model_file: submodules/editquality/models/kowiki.damaging.gradient_boosting.model
   kowiki_goodfaith:
