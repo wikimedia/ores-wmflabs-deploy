@@ -1,0 +1,100 @@
+# Feature extractors
+extractors:
+  defaults:
+    class: revscoring.extractors.api.Extractor
+    user_agent: Object Revision Evaluation Service <ahalfaker@wikimedia.org>
+    timeout: 5
+  arwiki_api:
+    host: https://ar.wikipedia.org
+  bnwiki_api:
+    host: https://bn.wikipedia.org
+  bswiki_api:
+    host: https://bs.wikipedia.org
+  cawiki_api:
+    host: https://ca.wikipedia.org
+  cswiki_api:
+    host: https://cs.wikipedia.org
+  dewiki_api:
+    host: https://de.wikipedia.org
+  elwiki_api:
+    host: https://el.wikipedia.org
+  enwiki_api:
+    host: https://en.wikipedia.org
+  enwiktionary_api:
+    host: https://en.wiktionary.org
+  eswiki_api:
+    host: https://es.wikipedia.org
+  eswikibooks_api:
+    host: https://es.wikibooks.org
+  eswikiquote_api:
+    host: https://es.wikiquote.org
+  etwiki_api:
+    host: https://et.wikipedia.org
+  euwiki_api:
+    host: https://eu.wikipedia.org
+  fawiki_api:
+    host: https://fa.wikipedia.org
+  fakewiki_offline:
+    class: revscoring.extractors.OfflineExtractor
+  fiwiki_api:
+    host: https://fi.wikipedia.org
+  frwiki_api:
+    host: https://fr.wikipedia.org
+  frwikisource_api:
+    host: https://fr.wikisource.org
+  glwiki_api:
+    host: https://gl.wikipedia.org
+  hewiki_api:
+    host: https://he.wikipedia.org
+  hrwiki_api:
+    host: https://hr.wikipedia.org
+  huwiki_api:
+    host: https://hu.wikipedia.org
+  idwiki_api:
+    host: https://id.wikipedia.org
+  iswiki_api:
+    host: https://is.wikipedia.org
+  itwiki_api:
+    host: https://it.wikipedia.org
+  jawiki_api:
+    host: https://ja.wikipedia.org
+  kowiki_api:
+    host: https://ko.wikipedia.org
+  lvwiki_api:
+    host: https://lv.wikipedia.org
+  nlwiki_api:
+    host: https://nl.wikipedia.org
+  nowiki_api:
+    host: https://no.wikipedia.org
+  plwiki_api:
+    host: https://pl.wikipedia.org
+  ptwiki_api:
+    host: https://pt.wikipedia.org
+  rowiki_api:
+    host: https://ro.wikipedia.org
+  ruwiki_api:
+    host: https://ru.wikipedia.org
+  simplewiki_api:
+    host: https://simple.wikipedia.org
+  sqwiki_api:
+    host: https://sq.wikipedia.org
+  srwiki_api:
+    host: https://sr.wikipedia.org
+  svwiki_api:
+    host: https://sv.wikipedia.org
+  testwiki_api:
+    host: https://test.wikipedia.org
+  tawiki_api:
+    host: https://tr.wikipedia.org
+  translatewiki_api:
+    host: https://translatewiki.net
+  trwiki_api:
+    host: https://tr.wikipedia.org
+  ukwiki_api:
+    host: https://uk.wikipedia.org
+  viwiki_api:
+    host: https://vi.wikipedia.org
+  wikidata_api:
+    host: https://wikidata.org
+  zhwiki_api:
+    host: https://zh.wikipedia.org
