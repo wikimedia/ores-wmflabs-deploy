@@ -61,7 +61,7 @@ scoring_systems:
     accept_content: ['pickle', 'json']
     task_serializer: 'json'
     result_serializer: 'json'
-    worker_concurrency: 35
+    worker_concurrency: 16
     worker_max_tasks_per_child: 100
     worker_hijack_root_logger: false
     task_create_missing_queues: true
