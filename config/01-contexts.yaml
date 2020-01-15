@@ -70,6 +70,7 @@ scoring_contexts:
       wp10: enwiki_articlequality
       articlequality: enwiki_articlequality
       draftquality: enwiki_draftquality
+      articletopic: enwiki_articletopic
       drafttopic: enwiki_drafttopic
       damaging: enwiki_damaging
       goodfaith: enwiki_goodfaith
@@ -78,6 +79,8 @@ scoring_contexts:
         "on": ["edit"]
       drafttopic:
         "on": ["page_creation"]
+      articletopic:
+        "on": ["main_edit"]
       goodfaith:
         "on": ["edit"]
   enwiktionary:
@@ -283,9 +286,12 @@ scoring_contexts:
   nowiki:
     extractor: nowiki_api
     scorer_models:
-      reverted: nowiki_revert
+      damaging: nowiki_damaging
+      goodfaith: nowiki_goodfaith
     precache:
-      reverted:
+      damaging:
+        "on": ["edit"]
+      goodfaith:
         "on": ["edit"]
   plwiki:
     extractor: plwiki_api

@@ -45,11 +45,15 @@ import os
 from fabric.api import cd, env, put, roles, shell_env, sudo
 
 env.roledefs = {
-    'web': ['ores-web-01.eqiad.wmflabs',
-            'ores-web-03.eqiad.wmflabs',
-            'ores-web-02.eqiad.wmflabs'],
+    'web': ['ores-web-04.eqiad.wmflabs',
+            'ores-web-05.eqiad.wmflabs',
+            'ores-web-06.eqiad.wmflabs'],
     'staging': ['ores-staging-01.eqiad.wmflabs'],
-    'worker': ['ores-worker-01.eqiad.wmflabs', 'ores-worker-02.eqiad.wmflabs',]
+    'worker': ['ores-worker-01.eqiad.wmflabs',
+               'ores-worker-02.eqiad.wmflabs',
+               'ores-worker-03.eqiad.wmflabs',
+               'ores-worker-04.eqiad.wmflabs',
+               'ores-worker-05.eqiad.wmflabs']
 }
 env.use_ssh_config = True
 env.shell = '/bin/bash -c'
@@ -92,6 +96,7 @@ def git_clone(branch=deploy_branch):
     sr('cd', '/', '&&', 'git', 'clone', '--recursive',
             'https://github.com/wikimedia/ores-wmflabs-deploy.git', config_dir)
     sr('cd', config_dir, '&&', 'git', 'checkout', branch)
+    update_git(branch=branch)
 
 
 def initialize_server(branch=deploy_branch):

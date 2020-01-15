@@ -28,6 +28,8 @@ scorer_models:
     model_file: submodules/editquality/models/elwiki.reverted.gradient_boosting.model
   enwiki_draftquality:
     model_file: submodules/draftquality/models/enwiki.draft_quality.gradient_boosting.model.bz2
+  enwiki_articletopic:
+    model_file: submodules/drafttopic/models/enwiki.articletopic.gradient_boosting.model
   enwiki_drafttopic:
     model_file: submodules/drafttopic/models/enwiki.drafttopic.gradient_boosting.model
   enwiki_articlequality:
@@ -55,7 +57,7 @@ scorer_models:
   etwiki_goodfaith:
     model_file: submodules/editquality/models/etwiki.goodfaith.gradient_boosting.model
   euwiki_articlequality:
-    model_file: submodules/articlequality/models/euwiki.wp10.gradient_boosting.model
+    model_file: submodules/articlequality/models/euwiki.wp10.random_forest.model
   fawiki_damaging:
     model_file: submodules/editquality/models/fawiki.damaging.gradient_boosting.model
   fawiki_goodfaith:
@@ -115,8 +117,10 @@ scorer_models:
     model_file: submodules/editquality/models/nlwiki.damaging.gradient_boosting.model
   nlwiki_goodfaith:
     model_file: submodules/editquality/models/nlwiki.goodfaith.gradient_boosting.model
-  nowiki_revert:
-    model_file: submodules/editquality/models/nowiki.reverted.gradient_boosting.model
+  nowiki_damaging:
+    model_file: submodules/editquality/models/nowiki.damaging.gradient_boosting.model
+  nowiki_goodfaith:
+    model_file: submodules/editquality/models/nowiki.goodfaith.gradient_boosting.model
   plwiki_damaging:
     model_file: submodules/editquality/models/plwiki.damaging.gradient_boosting.model
   plwiki_goodfaith:

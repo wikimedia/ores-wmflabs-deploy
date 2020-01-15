@@ -36,7 +36,7 @@ metrics_collectors:
     class: ores.metrics_collectors.Logger
   wmflabs_statsd:
     class: ores.metrics_collectors.Statsd
-    host: labmon1001.eqiad.wmnet
+    host: cloudmetrics1001.eqiad.wmnet
     prefix: ores.{hostname}
 
 # Score processor
