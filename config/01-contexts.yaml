@@ -5,11 +5,14 @@ scoring_contexts:
     scorer_models:
       damaging: arwiki_damaging
       goodfaith: arwiki_goodfaith
+      articletopic: arwiki_articletopic
     precache:
       damaging:
         "on": ["edit"]
       goodfaith:
         "on": ["edit"]
+      articletopic:
+        "on": ["main_edit"]
   bnwiki:
     extractor: bnwiki_api
     scorer_models:
@@ -42,11 +45,14 @@ scoring_contexts:
     scorer_models:
       damaging: cswiki_damaging
       goodfaith: cswiki_goodfaith
+      articletopic: cswiki_articletopic
     precache:
       damaging:
         "on": ["edit"]
       goodfaith:
         "on": ["edit"]
+      articletopic:
+        "on": ["main_edit"]
   dewiki:
     extractor: dewiki_api
     scorer_models:
@@ -81,6 +87,8 @@ scoring_contexts:
         "on": ["page_creation"]
       articletopic:
         "on": ["main_edit"]
+      articlequality:
+        "on": ["edit"]
       goodfaith:
         "on": ["edit"]
   enwiktionary:
@@ -258,11 +266,14 @@ scoring_contexts:
     scorer_models:
       damaging: kowiki_damaging
       goodfaith: kowiki_goodfaith
+      articletopic: kowiki_articletopic
     precache:
       damaging:
         "on": ["edit"]
       goodfaith:
         "on": ["edit"]
+      articletopic:
+        "on": ["main_edit"]
   lvwiki:
     extractor: lvwiki_api
     scorer_models:
@@ -428,9 +439,12 @@ scoring_contexts:
     extractor: viwiki_api
     scorer_models:
       reverted: viwiki_revert
+      articletopic: viwiki_articletopic
     precache:
       reverted:
         "on": ["edit"]
+      articletopic:
+        "on": ["main_edit"]
   wikidatawiki:
     extractor: wikidata_api
     scorer_models:

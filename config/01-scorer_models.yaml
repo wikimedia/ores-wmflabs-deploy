@@ -6,6 +6,8 @@ scorer_models:
     model_file: submodules/editquality/models/arwiki.damaging.gradient_boosting.model
   arwiki_goodfaith:
     model_file: submodules/editquality/models/arwiki.goodfaith.gradient_boosting.model
+  arwiki_articletopic:
+    model_file: submodules/drafttopic/models/arwiki.articletopic.gradient_boosting.model
   bnwiki_revert:
     model_file: submodules/editquality/models/bnwiki.reverted.gradient_boosting.model
   bswiki_damaging:
@@ -20,6 +22,8 @@ scorer_models:
     model_file: submodules/editquality/models/cswiki.damaging.gradient_boosting.model
   cswiki_goodfaith:
     model_file: submodules/editquality/models/cswiki.goodfaith.gradient_boosting.model
+  cswiki_articletopic:
+    model_file: submodules/drafttopic/models/cswiki.articletopic.gradient_boosting.model
   dewiki_damaging:
     model_file: submodules/editquality/models/dewiki.damaging.gradient_boosting.model
   dewiki_goodfaith:
@@ -109,6 +113,8 @@ scorer_models:
     model_file: submodules/editquality/models/kowiki.damaging.gradient_boosting.model
   kowiki_goodfaith:
     model_file: submodules/editquality/models/kowiki.goodfaith.gradient_boosting.model
+  kowiki_articletopic:
+    model_file: submodules/drafttopic/models/kowiki.articletopic.gradient_boosting.model
   lvwiki_damaging:
     model_file: submodules/editquality/models/lvwiki.damaging.gradient_boosting.model
   lvwiki_goodfaith:
@@ -172,6 +178,8 @@ scorer_models:
     model_file: submodules/editquality/models/ukwiki.reverted.gradient_boosting.model
   viwiki_revert:
     model_file: submodules/editquality/models/viwiki.reverted.gradient_boosting.model
+  viwiki_articletopic:
+    model_file: submodules/drafttopic/models/viwiki.articletopic.gradient_boosting.model
   wikidata_damaging:
     model_file: submodules/editquality/models/wikidatawiki.damaging.gradient_boosting.model
   wikidata_goodfaith:
